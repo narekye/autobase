@@ -1,0 +1,10 @@
+﻿CREATE TABLE [dbo].[Model]
+(
+	[Id] INT NOT NULL IDENTITY(1,1),
+	[MakeId] INT NOT NULL,
+	[ModelName] VARCHAR(1024) NOT NULL 
+
+	CONSTRAINT PK_Model PRIMARY KEY ([Id]),
+	CONSTRAINT FK_Model_Make FOREIGN KEY ([MakeId]) REFERENCES [dbo].[Make]([Id]),
+	CONSTRAINT UN_ModelName UNIQUE ([ModelName])
+)

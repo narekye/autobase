@@ -1,0 +1,40 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AutoBase.LocalClient"
+        xmlns:dxlc="http://schemas.devexpress.com/winfx/2008/xaml/layoutcontrol"
+        xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core" 
+        xmlns:dxb="http://schemas.devexpress.com/winfx/2008/xaml/bars" x:Class="AutoBase.LocalClient.MainWindow" 
+        dx:ThemeManager.Theme="MetropolisDark"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="auto" Width="auto">
+
+    <dxlc:LayoutControl HorizontalAlignment="Left" Height="auto" VerticalAlignment="Top" Width="auto">
+        <dxlc:LayoutGroup Header="LayoutGroup" Width="auto" View="GroupBox" >
+
+            <dxb:BarManager Height="50" Width="400">
+                <dxb:BarManager.Bars>
+                    <dxb:Bar x:Name="mainMenuBar" Caption="Main Menu" IsMainMenu="True">
+                        <dxb:Bar.DockInfo>
+                            <dxb:BarDockInfo ContainerType="Top"/>
+                        </dxb:Bar.DockInfo>
+                    </dxb:Bar>
+                    <dxb:Bar Caption="bar1">
+                        <dxb:Bar.DockInfo>
+                            <dxb:BarDockInfo ContainerType="Top"/>
+                        </dxb:Bar.DockInfo>
+                    </dxb:Bar>
+                    <dxb:Bar x:Name="statusBar" Caption="Status Bar" IsStatusBar="True">
+                        <dxb:Bar.DockInfo>
+                            <dxb:BarDockInfo ContainerType="Bottom"/>
+                        </dxb:Bar.DockInfo>
+                    </dxb:Bar>
+                </dxb:BarManager.Bars>
+                <Grid Background="Transparent"/>
+            </dxb:BarManager>
+
+        </dxlc:LayoutGroup>
+    </dxlc:LayoutControl>
+</Window>
