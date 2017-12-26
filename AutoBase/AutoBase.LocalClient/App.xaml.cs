@@ -1,4 +1,4 @@
-﻿using AutoBase.DAL;
+﻿// using AutoBase.DAL;
 using System.Windows;
 
 namespace AutoBase.LocalClient
@@ -8,11 +8,11 @@ namespace AutoBase.LocalClient
     /// </summary>
     public partial class App : Application
     {
-        public static IAutoBaseEntities Db { get; set; }
+        // public static IAutoBaseEntities Db { get; set; }
 
-        static App()
-        {
-            Db = new DAL.AutoBaseEntities.AutoBaseEntities();
-        }
+        //static App()
+        //{
+        //    Db = new DAL.AutoBaseEntities.AutoBaseEntities();
+        //}
     }
 }

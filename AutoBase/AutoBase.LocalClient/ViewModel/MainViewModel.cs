@@ -21,14 +21,22 @@ namespace AutoBase.LocalClient.ViewModel
         /// </summary>
         public MainViewModel()
         {
-            ////if (IsInDesignMode)
-            ////{
-            ////    // Code runs in Blend --> create design time data.
-            ////}
-            ////else
-            ////{
-            ////    // Code runs "for real"
-            ////}
+            if (IsInDesignMode)
+            {
+                // Code runs in Blend --> create design time data.
+            }
+            else
+            {
+                // Code runs "for real"
+            }
         }
+
+        #region Command 
+
+        // private ICommand
+
+        #endregion
+
+        
     }
 }
