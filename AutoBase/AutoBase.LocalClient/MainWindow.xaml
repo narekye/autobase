@@ -1,4 +1,6 @@
-﻿<Window
+﻿<ctrl:AdvWindow
+        x:Class="AutoBase.LocalClient.MainWindow"
+        xmlns:ctrl="clr-namespace:AutoBase.LocalClient.Controls"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -6,35 +8,37 @@
         xmlns:local="clr-namespace:AutoBase.LocalClient"
         xmlns:dxlc="http://schemas.devexpress.com/winfx/2008/xaml/layoutcontrol"
         xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core" 
-        xmlns:dxb="http://schemas.devexpress.com/winfx/2008/xaml/bars" x:Class="AutoBase.LocalClient.MainWindow" 
-        dx:ThemeManager.Theme="MetropolisDark"
+        xmlns:dxb="http://schemas.devexpress.com/winfx/2008/xaml/bars"
         mc:Ignorable="d"
         Title="MainWindow" Height="auto" Width="auto">
 
-    <dxlc:LayoutControl HorizontalAlignment="Left" Height="auto" VerticalAlignment="Top" Width="auto">
-        <dxlc:LayoutGroup Header="LayoutGroup" Width="auto" View="GroupBox" >
+    <dxb:BarManager x:Name="barManager" dx:DXSerializer.SerializationID="barManager" AllowCustomization="False" AllowQuickCustomization="False">
+        <dxb:BarManager.Items>
 
-            <dxb:BarManager Height="50" Width="400">
-                <dxb:BarManager.Bars>
-                    <dxb:Bar x:Name="mainMenuBar" Caption="Main Menu" IsMainMenu="True">
-                        <dxb:Bar.DockInfo>
-                            <dxb:BarDockInfo ContainerType="Top"/>
-                        </dxb:Bar.DockInfo>
-                    </dxb:Bar>
-                    <dxb:Bar Caption="bar1">
-                        <dxb:Bar.DockInfo>
-                            <dxb:BarDockInfo ContainerType="Top"/>
-                        </dxb:Bar.DockInfo>
-                    </dxb:Bar>
-                    <dxb:Bar x:Name="statusBar" Caption="Status Bar" IsStatusBar="True">
-                        <dxb:Bar.DockInfo>
-                            <dxb:BarDockInfo ContainerType="Bottom"/>
-                        </dxb:Bar.DockInfo>
-                    </dxb:Bar>
-                </dxb:BarManager.Bars>
-                <Grid Background="Transparent"/>
-            </dxb:BarManager>
+            <dxb:BarButtonItem x:Name="bMakes" Content="Makes" Hint="Change makes"></dxb:BarButtonItem>
+            <dxb:BarButtonItem x:Name="bModels" Content="Models" Hint="Chaneg or view models"></dxb:BarButtonItem>
+            
+            <dxb:BarSubItem x:Name="db" Content="Database" BarItemDisplayMode="Content">
+                <dxb:BarSubItem.Resources>
+                    <Style TargetType="{x:Type dxb:BarSubItem}">
+                        <Setter Property="IsVisible" Value="True" />
+                        
+                    </Style>
+                </dxb:BarSubItem.Resources>
+                <dxb:BarSubItem.ItemLinks>
+                    <dxb:BarButtonItemLink BarItemName="bMakes" />
+                    <dxb:BarButtonItemLink BarItemName="bModels" />
+                </dxb:BarSubItem.ItemLinks>
+            </dxb:BarSubItem>
 
-        </dxlc:LayoutGroup>
-    </dxlc:LayoutControl>
-</Window>
+        </dxb:BarManager.Items>
+        <dxb:BarManager.Bars>
+            <dxb:Bar>
+                <dxb:Bar.ItemLinks>
+                    <dxb:BarSubItemLink BarItemName="db" />
+                </dxb:Bar.ItemLinks>
+            </dxb:Bar>
+        </dxb:BarManager.Bars>
+
+    </dxb:BarManager>
+</ctrl:AdvWindow>
