@@ -110,6 +110,10 @@
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\ViewModelBase.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
+    <Compile Include="WorkPlaces\DumpsWP\DumpsControl.xaml.cs">
+      <DependentUpon>DumpsControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WorkPlaces\DumpsWP\DumpsViewModel.cs" />
     <Compile Include="WorkPlaces\MakesWP\MakesControl.xaml.cs">
       <DependentUpon>MakesControl.xaml</DependentUpon>
     </Compile>
@@ -126,6 +130,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="WorkPlaces\DumpsWP\DumpsControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="WorkPlaces\MakesWP\MakesControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
