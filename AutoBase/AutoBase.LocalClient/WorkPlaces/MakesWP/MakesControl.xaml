@@ -31,9 +31,9 @@
             <dxdo:DockLayoutManager >
                 <dxdo:LayoutGroup Orientation="Horizontal" >
                     <dxdo:LayoutGroup Orientation="Vertical">
-                        <dxdo:LayoutPanel ItemWidth="*"  AllowSizing="True" Style="{StaticResource layoutMainControl}" >
+                        <dxdo:LayoutPanel ItemWidth="*"  AllowSizing="True"  >
                             <Grid x:Name="imagesGrid" >
-                                <controls:AdvGridControl  AutoPopulateColumns="False" Grid.Column="0" x:Name="imagesGridControl" SelectionMode="Cell" Focused="{Binding IsFocused}"
+                                <!--<controls:AdvGridControl  AutoPopulateColumns="False" Grid.Column="0" x:Name="imagesGridControl" SelectionMode="Cell" Focused="{Binding IsFocused}"
 									ItemsSource="{Binding DataContext.Images, ElementName=dataPager1, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
 									SelectedItem="{Binding SelectedImage, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
 
@@ -132,28 +132,14 @@
 											DetailHeaderContent="Clients" />
                                     </controls:AdvGridControl.View>
 
-                                </controls:AdvGridControl>
+                                </controls:AdvGridControl>-->
                                 <dx:WaitIndicator DeferedVisibility="{Binding IsImagesLoading, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay, Delay=250}"  />
                             </Grid>
 
                         </dxdo:LayoutPanel>
 
 
-                        <dxdo:LayoutPanel ItemHeight="30"
-							Style="{StaticResource layoutMainControl}" >
-                            <StackPanel MaxHeight="30" Orientation="Horizontal">
-                                <dxlc:LayoutItem  LabelPosition="Left" Margin="10, 0, 0, 0">
-                                    <dxe:ButtonEdit EditValue="{Binding  NumberOfRows, Mode=TwoWay}" Width="100" HorizontalAlignment="Left" Margin="10, 0, 15, 0"
-											AllowNullInput="True" NullText="100" ShowNullText="True" NullValue="1" AllowDefaultButton="False"/>
-                                </dxlc:LayoutItem>
 
-                                <dataPager:DataPager x:Name="dataPager1" Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Bottom"        
-									AutoEllipsis="True" 
-									IsTotalItemCountFixed="False"
-									Source="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=DataContext.Images, UpdateSourceTrigger=PropertyChanged}" 
-									helpers:DevGridDataPresenter.PageIndexChangedBehaviour="{Binding PageIndexChangedCommand}"/>
-                            </StackPanel>
-                        </dxdo:LayoutPanel>
 
                     </dxdo:LayoutGroup>
                     <dxdo:LayoutPanel ItemWidth="200"  AllowClose="False">
@@ -183,7 +169,7 @@
                                                     <grid:SearchLookUpEditStyleSettings />
                                                 </grid:LookUpEdit.StyleSettings>
 
-                                                <grid:LookUpEdit.PopupContentTemplate>
+                                                <!--<grid:LookUpEdit.PopupContentTemplate>
                                                     <ControlTemplate>
                                                         <grid:GridControl x:Name="PART_GridControl">
                                                             <grid:GridControl.Columns>
@@ -196,7 +182,7 @@
                                                             </grid:GridControl.View>
                                                         </grid:GridControl>
                                                     </ControlTemplate>
-                                                </grid:LookUpEdit.PopupContentTemplate>
+                                                </grid:LookUpEdit.PopupContentTemplate>-->
 
                                                 <dxe:ButtonInfo ButtonKind="Simple" GlyphKind="Cancel"
 												Command="{Binding DataContext.DeletePartnerCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}}"
@@ -218,7 +204,7 @@
                                                     <grid:SearchLookUpEditStyleSettings />
                                                 </grid:LookUpEdit.StyleSettings>
 
-                                                <grid:LookUpEdit.PopupContentTemplate>
+                                                <!--<grid:LookUpEdit.PopupContentTemplate>
                                                     <ControlTemplate>
                                                         <grid:GridControl x:Name="PART_GridControl">
                                                             <grid:GridControl.Columns>
@@ -230,7 +216,7 @@
                                                             </grid:GridControl.View>
                                                         </grid:GridControl>
                                                     </ControlTemplate>
-                                                </grid:LookUpEdit.PopupContentTemplate>
+                                                </grid:LookUpEdit.PopupContentTemplate>-->
 
                                                 <dxe:ButtonInfo ButtonKind="Simple" GlyphKind="Cancel"
 												Command="{Binding DataContext.DeleteObjectTypeCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}}"
@@ -257,13 +243,13 @@
                                         </dxdo:LayoutControlItem>
 
                                         <dxdo:LayoutControlItem CaptionLocation="Left"  >
-                                            <dxe:CheckEdit Style="{StaticResource rootElement}"  HorizontalAlignment="Center" 
+                                            <dxe:CheckEdit HorizontalAlignment="Center" 
 														   IsThreeState="True"
 														   IsChecked="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=DataContext.Filter.IsDeleted}"/>
                                         </dxdo:LayoutControlItem>
 
                                         <dxdo:LayoutControlItem  CaptionLocation="Left">
-                                            <dxe:CheckEdit HorizontalAlignment="Center" Style="{StaticResource rootElement}"
+                                            <dxe:CheckEdit HorizontalAlignment="Center" 
 														   IsThreeState="True"
 														   IsChecked="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=DataContext.Filter.IsChecked}" />
                                         </dxdo:LayoutControlItem>
@@ -272,8 +258,8 @@
                                     </dxdo:LayoutGroup>
                                 </StackPanel>
                                 <StackPanel Grid.Row="1" Margin="10" HorizontalAlignment="Right" Orientation="Horizontal" Grid.ColumnSpan="2" >
-                                    <Button Style="{StaticResource dialogButton}" Command="{Binding OkButtonCommand}"/>
-                                    <Button Style="{StaticResource dialogButton}" Command="{Binding ClearButtonCommand}"/>
+                                    <Button Command="{Binding OkButtonCommand}"/>
+                                    <Button Command="{Binding ClearButtonCommand}"/>
                                 </StackPanel>
                             </Grid>
                         </ScrollViewer>

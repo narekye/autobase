@@ -1,6 +1,6 @@
 ﻿using AutoBase.LocalClient.Controls;
 
-namespace AutoBase.LocalClient.Workplaces.MakesWP
+namespace AutoBase.LocalClient.WorkPlaces.MakesWP
 {
     /// <summary>
     /// Interaction logic for MakesControl.xaml
