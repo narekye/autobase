@@ -47,6 +47,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>D:\Program Files (x86)\DevExpress 15.1\Components\Bin\Framework\DevExpress.Xpf.Grid.v15.1.dll</HintPath>
     </Reference>
+    <Reference Include="DevExpress.Xpf.Grid.v15.1.Core, Version=15.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\DevExpress 15.1\Components\Bin\Framework\DevExpress.Xpf.Grid.v15.1.Core.dll</HintPath>
+    </Reference>
     <Reference Include="DevExpress.Xpf.LayoutControl.v15.1, Version=15.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Xpf.Themes.DXStyle.v15.1, Version=15.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -104,12 +108,14 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Controls\AdvControl.cs" />
+    <Compile Include="Controls\AdvDocumentGroup.cs" />
     <Compile Include="Controls\AdvGridControl.cs" />
     <Compile Include="Controls\AdvWindow.cs" />
     <Compile Include="Globals.cs" />
-    <Compile Include="ViewModel\MainViewModel.cs" />
-    <Compile Include="ViewModel\ViewModelBase.cs" />
-    <Compile Include="ViewModel\ViewModelLocator.cs" />
+    <Compile Include="ViewModels\MainViewModel.cs" />
+    <Compile Include="ViewModels\ViewModelBase.cs" />
+    <Compile Include="ViewModels\ViewModelLocator.cs" />
+    <Compile Include="ViewModels\WorkPlaceViewModelBase.cs" />
     <Compile Include="WorkPlaces\DumpsWP\DumpsControl.xaml.cs">
       <DependentUpon>DumpsControl.xaml</DependentUpon>
     </Compile>

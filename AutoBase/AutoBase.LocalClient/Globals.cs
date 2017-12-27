@@ -10,5 +10,13 @@ namespace AutoBase.LocalClient
         {
             Dal = new DAL.AutoBaseEntities.AutoBaseEntities();
         }
+
+        private static string _devExpressStyle = "Office2013";
+
+        public static string DevExpressStyle
+        {
+            get { return _devExpressStyle; }
+            set { _devExpressStyle = value; }
+        }
     }
 }
