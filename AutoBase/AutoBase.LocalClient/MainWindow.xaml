@@ -5,19 +5,37 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:AutoBase.LocalClient"
-        xmlns:dxlc="http://schemas.devexpress.com/winfx/2008/xaml/layoutcontrol"
         xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core" 
         xmlns:dxb="http://schemas.devexpress.com/winfx/2008/xaml/bars"
         xmlns:dxd="http://schemas.devexpress.com/winfx/2008/xaml/docking"   
-        xmlns:viewModel="clr-namespace:AutoBase.LocalClient.ViewModels"
+        xmlns:vm="clr-namespace:AutoBase.LocalClient.ViewModel"
+        xmlns:viewModel="clr-namespace:AutoBase.LocalClient.ViewModel"
         mc:Ignorable="d"
         Title="MainWindow" Height="auto" Width="auto">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Skins/MainWindowResourcesDictionary.xaml" />
+                <ResourceDictionary>
+                    <DataTemplate DataType="{x:Type vm:WorkPlaceViewModelBase}">
+                        <ContentPresenter Content="{Binding Content}" />
+                    </DataTemplate>
 
+                    <Style TargetType="dxd:DocumentPanel">
+                        <Setter Property="Caption" Value="{Binding DisplayName}" />
+                        <Setter Property="CloseCommand" Value="{Binding Path=CloseCommand}" />
+                    </Style>
+                </ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+    <Window.DataContext>
+        <viewModel:MainViewModel />
+    </Window.DataContext>
     <dxb:BarManager x:Name="barManager" dx:DXSerializer.SerializationID="barManager" AllowCustomization="False" AllowQuickCustomization="False" AllowHotCustomization="False">
         <dxb:BarManager.Items>
 
-            <dxb:BarButtonItem x:Name="bMakes" Content="Makes" Hint="Change makes" />
+            <dxb:BarButtonItem x:Name="bMakes" Content="Makes" Hint="Change makes" Command="{Binding MakesClick}"/>
             <dxb:BarButtonItem x:Name="bModels" Content="Models" Hint="Change or view models" />
 
             <dxb:BarButtonItem Name="bDeepBlue" Content="DeepBlue" Command="{Binding ThemeClick}" CommandParameter="DeepBlue" />
@@ -55,8 +73,8 @@
                 </dxb:BarSubItem.ItemLinks>
             </dxb:BarSubItem>
 
-            <dxb:BarSubItem x:Name="bsearch" Command="{Binding SearchCommand}"> </dxb:BarSubItem>
-            
+            <dxb:BarSubItem x:Name="bsearch" Command="{Binding SearchCommand}"></dxb:BarSubItem>
+
         </dxb:BarManager.Items>
         <dxb:BarManager.Bars>
             <dxb:Bar Caption="Main" IsMainMenu="True" UseWholeRow="True" AllowQuickCustomization="False" Cursor="None">

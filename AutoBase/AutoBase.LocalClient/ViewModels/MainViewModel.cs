@@ -1,6 +1,9 @@
 using AutoBase.LocalClient.Properties;
+using AutoBase.LocalClient.WorkPlaces.DumpsWP;
+using AutoBase.LocalClient.WorkPlaces.MakesWP;
 using DevExpress.Xpf.Core;
-using GalaSoft.MvvmLight.CommandWpf;
+using GalaSoft.MvvmLight.Command;
+using System;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows.Input;
@@ -9,7 +12,6 @@ namespace AutoBase.LocalClient.ViewModel
 {
     public class MainViewModel : ViewModelBase
     {
-
         private static ObservableCollection<WorkPlaceViewModelBase> _workPlaceList;
         private WorkPlaceViewModelBase _currWorkPlace;
         public WorkPlaceViewModelBase CurrWorkPlace
@@ -25,7 +27,7 @@ namespace AutoBase.LocalClient.ViewModel
 
         public MainViewModel()
         {
-
+            WorkPlaceList = new ObservableCollection<WorkPlaceViewModelBase>();
         }
 
         #region Command 
@@ -37,11 +39,24 @@ namespace AutoBase.LocalClient.ViewModel
             get { return _themeClick ?? (_themeClick = new RelayCommand<string>(ThemeClickExecute, s => true)); }
         }
 
+        private ICommand _makesClick;
+
+        public ICommand MakesClick
+        {
+            get { return _makesClick ?? (_makesClick = new RelayCommand(MakesClickExecute)); }
+        }
+        #endregion
+
+        #region Execution 
+        private void MakesClickExecute()
+        {
+            ActivateWP(new MakesViewModel(this, "", ""));
+        }
         #endregion
 
         public ObservableCollection<WorkPlaceViewModelBase> WorkPlaceList
         {
-            get { return _workPlaceList; } // ?? (workPlaceList = new ObservableCollection<WorkPlaceViewModelBase>()); }
+            get { return _workPlaceList; }
             set
             {
                 _workPlaceList = value;
@@ -51,7 +66,7 @@ namespace AutoBase.LocalClient.ViewModel
 
         public async void ActivateWP(WorkPlaceViewModelBase givenWindow)
         {
-            if (WorkPlaceList.Any(x => x.DisplayName.Equals(givenWindow.DisplayName)))
+            if (WorkPlaceList.Any(x => x.DisplayName != null && x.DisplayName.Equals(givenWindow.DisplayName)))
             {
                 WorkPlaceViewModelBase configPanel = WorkPlaceList.First(x => x.DisplayName == givenWindow.DisplayName);
                 CurrWorkPlace = configPanel;
@@ -85,6 +100,7 @@ namespace AutoBase.LocalClient.ViewModel
             Settings.Default.Save();
             Globals.DevExpressStyle = param;
             ThemeManager.SetThemeName(GetWindow(typeof(MainWindow)), param);
+            // 
         }
 
         #endregion

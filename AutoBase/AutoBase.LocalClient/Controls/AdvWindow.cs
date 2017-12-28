@@ -1,4 +1,6 @@
 ﻿using DevExpress.Xpf.Core;
+using System;
+using System.Windows.Media.Imaging;
 
 namespace AutoBase.LocalClient.Controls
 {
@@ -6,8 +8,9 @@ namespace AutoBase.LocalClient.Controls
     {
         public AdvWindow()
         {
+
             Loaded += AdvWindow_Loaded;
-            // Icon = new BitmapImage(new Uri("pack://application:,,,/Images/MainIco.ico", UriKind.Absolute));
+            Icon = new BitmapImage(new Uri("pack://application:,,,/Images/MainIco.ico", UriKind.Absolute));
         }
 
         void AdvWindow_Loaded(object sender, System.Windows.RoutedEventArgs e)
@@ -16,9 +19,8 @@ namespace AutoBase.LocalClient.Controls
             {
                 ThemeManager.SetThemeName(this, "MetropolisDark");
             }
-            catch (System.Exception)
+            catch (Exception)
             {
-
                 ThemeManager.SetThemeName(this, "DeepBlue");
             }
         }

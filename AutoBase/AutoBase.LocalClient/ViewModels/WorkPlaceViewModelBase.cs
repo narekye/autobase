@@ -176,12 +176,6 @@ namespace AutoBase.LocalClient.ViewModel
             _mainModel.CloseWorkPlace(this);
         }
 
-
-        protected WorkPlaceViewModelBase()
-        {
-            throw new NotImplementedException();
-        }
-
         #endregion
 
         #region static

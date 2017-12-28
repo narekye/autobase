@@ -136,6 +136,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Skins\MainWindowResourcesDictionary.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="WorkPlaces\DumpsWP\DumpsControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -174,7 +178,9 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Images\MainIco.ico" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AutoBase.DAL\AutoBase.DAL.csproj">
       <Project>{32770fac-28bc-48a4-a080-96f6cc51e3f2}</Project>

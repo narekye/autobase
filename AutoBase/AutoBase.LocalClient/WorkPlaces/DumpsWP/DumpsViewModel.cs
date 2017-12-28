@@ -1,6 +1,12 @@
-﻿namespace AutoBase.LocalClient.WorkPlaces.DumpsWP
+﻿using AutoBase.LocalClient.ViewModel;
+
+namespace AutoBase.LocalClient.WorkPlaces.DumpsWP
 {
-    public class DumpsViewModel : ViewModel.ViewModelBase
+    public class DumpsViewModel : WorkPlaceViewModelBase
     {
+        public DumpsViewModel(MainViewModel place, string a, string b) : base(place, a, b)
+        {
+
+        }
     }
 }

@@ -13,8 +13,7 @@
     <dxb:BarManager x:Name="ImageBarManager">
 
         <dxb:BarManager.Items>
-            <dxb:BarButtonItem x:Name="Save" Command="{Binding SaveButtonCommand}" 
-							   Glyph="pack://application:,,,/DevExpress.Images.v15.1;component/Images/Save/Save_16x16.png" />
+            <dxb:BarButtonItem x:Name="Save" Command="{Binding SaveButtonCommand}"  />
         </dxb:BarManager.Items>
         <dxb:BarManager.Bars>
             <dxb:Bar Caption="Main" UseWholeRow="True">

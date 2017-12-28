@@ -4,5 +4,9 @@ namespace AutoBase.LocalClient.Controls
 {
     public class AdvControl : UserControl
     {
+        public AdvControl()
+        {
+
+        }
     }
 }
