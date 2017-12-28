@@ -65,13 +65,6 @@ namespace AutoBase.LocalClient.ViewModel
         //	}
         //}
 
-        private string _uniqueId;
-
-        public string UniqueId
-        {
-            get { return _uniqueId; }
-        }
-
         public bool IsStayOpen { get; set; }
 
         public bool IsFocused

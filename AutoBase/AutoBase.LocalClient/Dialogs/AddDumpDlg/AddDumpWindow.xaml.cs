@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AutoBase.LocalClient.Controls;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,7 +18,7 @@ namespace AutoBase.LocalClient.Dialogs.AddDumpDlg
     /// <summary>
     /// Interaction logic for AddDumpWindow.xaml
     /// </summary>
-    public partial class AddDumpWindow : Window
+    public partial class AddDumpWindow : AdvWindow
     {
         public AddDumpWindow()
         {
