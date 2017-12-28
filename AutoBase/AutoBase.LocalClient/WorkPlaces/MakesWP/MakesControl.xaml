@@ -257,8 +257,8 @@
                                     </dxdo:LayoutGroup>
                                 </StackPanel>
                                 <StackPanel Grid.Row="1" Margin="10" HorizontalAlignment="Right" Orientation="Horizontal" Grid.ColumnSpan="2" >
-                                    <Button Command="{Binding OkButtonCommand}"/>
-                                    <Button Command="{Binding ClearButtonCommand}"/>
+                                    <Button Content="OK" Command="{Binding OkButtonCommand}" Style="{StaticResource dialogButton}"/>
+                                    <Button Content="Cancel" Command="{Binding ClearButtonCommand}" Style="{ StaticResource dialogButton}"/>
                                 </StackPanel>
                             </Grid>
                         </ScrollViewer>

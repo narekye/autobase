@@ -1,5 +1,5 @@
 ﻿<ctrl:AdvWindow
-        x:Class="AutoBase.LocalClient.MainWindow"
+        x:Class="AutoBase.LocalClient.MainWindowViewModel"
         xmlns:ctrl="clr-namespace:AutoBase.LocalClient.Controls"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -10,8 +10,9 @@
         xmlns:dxd="http://schemas.devexpress.com/winfx/2008/xaml/docking"   
         xmlns:vm="clr-namespace:AutoBase.LocalClient.ViewModel"
         xmlns:viewModel="clr-namespace:AutoBase.LocalClient.ViewModel"
+        xmlns:resx="clr-namespace:AutoBase.UI.Res.Properties;assembly=AutoBase.UI.Res"
         mc:Ignorable="d"
-        Title="MainWindow" Height="auto" Width="auto">
+        Title="Main window" Height="auto" Width="auto">
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -35,9 +36,6 @@
     <dxb:BarManager x:Name="barManager" dx:DXSerializer.SerializationID="barManager" AllowCustomization="False" AllowQuickCustomization="False" AllowHotCustomization="False">
         <dxb:BarManager.Items>
 
-            <dxb:BarButtonItem x:Name="bMakes" Content="Makes" Hint="Change makes" Command="{Binding MakesClick}"/>
-            <dxb:BarButtonItem x:Name="bModels" Content="Models" Hint="Change or view models" />
-
             <dxb:BarButtonItem Name="bDeepBlue" Content="DeepBlue" Command="{Binding ThemeClick}" CommandParameter="DeepBlue" />
             <dxb:BarButtonItem Name="bDXStyle" Content="DXStyle" Command="{Binding ThemeClick}" CommandParameter="DXStyle" />
             <dxb:BarButtonItem Name="bLightGray" Content="LightGray" Command="{Binding ThemeClick}" CommandParameter="LightGray"/>
@@ -55,13 +53,10 @@
                         <Setter Property="IsVisible" Value="True" />
                     </Style>
                 </dxb:BarSubItem.Resources>
-                <dxb:BarSubItem.ItemLinks>
-                    <dxb:BarButtonItemLink BarItemName="bMakes" />
-                    <dxb:BarButtonItemLink BarItemName="bModels" />
-                </dxb:BarSubItem.ItemLinks>
             </dxb:BarSubItem>
-
-            <dxb:BarSubItem x:Name="themes" Content="Themes" BarItemDisplayMode="Content">
+            
+            <!--Themes-->
+            <dxb:BarSubItem x:Name="bThemes" Content="{x:Static resx:Strings.Themes}" BarItemDisplayMode="Content">
                 <dxb:BarSubItem.ItemLinks>
                     <dxb:BarButtonItemLink BarItemName="bDeepBlue" />
                     <dxb:BarButtonItemLink BarItemName="bDXStyle" />
@@ -72,19 +67,21 @@
                     <dxb:BarButtonItemLink BarItemName="bOffice2007Blue" />
                 </dxb:BarSubItem.ItemLinks>
             </dxb:BarSubItem>
-
-            <dxb:BarSubItem x:Name="bsearch" Command="{Binding SearchCommand}"></dxb:BarSubItem>
-
+            <dxb:BarSubItem x:Name="bModules" Content="{x:Static resx:Strings.Modules}" Command="{Binding ModulesClick}" />
+            <dxb:BarSubItem x:Name="bModels" Content="{x:Static resx:Strings.Models}" BarItemDisplayMode="Content" />
+            <dxb:BarSubItem x:Name="bMakes" Content="{x:Static resx:Strings.Makes}" />
         </dxb:BarManager.Items>
         <dxb:BarManager.Bars>
             <dxb:Bar Caption="Main" IsMainMenu="True" UseWholeRow="True" AllowQuickCustomization="False" Cursor="None">
                 <dxb:Bar.ItemLinks>
                     <dxb:BarSubItemLink Cursor="None" BarItemName="db" />
-                    <dxb:BarSubItemLink Cursor="None" BarItemName="themes" />
+                    <dxb:BarSubItemLink Cursor="None" BarItemName="bMakes" />
+                    <dxb:BarSubItemLink Cursor="None" BarItemName="bModels" />
+                    <dxb:BarSubItemLink Cursor="None" BarItemName="bModules"/>
+                    <dxb:BarSubItemLink Cursor="None" BarItemName="bThemes" />
                 </dxb:Bar.ItemLinks>
             </dxb:Bar>
         </dxb:BarManager.Bars>
-
         <dxd:DockLayoutManager ItemsSource="{Binding WorkPlaceList}" x:Name="docManager" FloatingMode="Desktop" FloatingDocumentContainer="DocumentHost"
                                ClosingBehavior="ImmediatelyRemove" >
             <dxd:LayoutGroup>
@@ -92,6 +89,5 @@
                                        DestroyOnClosingChildren="False" ClosePageButtonShowMode="InActiveTabPageAndTabControlHeader" />
             </dxd:LayoutGroup>
         </dxd:DockLayoutManager>
-
     </dxb:BarManager>
 </ctrl:AdvWindow>

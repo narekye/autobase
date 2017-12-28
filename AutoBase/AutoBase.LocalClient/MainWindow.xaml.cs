@@ -5,9 +5,9 @@ namespace AutoBase.LocalClient
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : AdvWindow
+    public partial class MainWindowViewModel : AdvWindow
     {
-        public MainWindow()
+        public MainWindowViewModel()
         {
             InitializeComponent();
         }

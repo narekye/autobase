@@ -1,12 +1,11 @@
 using AutoBase.LocalClient.Properties;
-using AutoBase.LocalClient.WorkPlaces.DumpsWP;
 using AutoBase.LocalClient.WorkPlaces.MakesWP;
 using DevExpress.Xpf.Core;
 using GalaSoft.MvvmLight.Command;
-using System;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows.Input;
+using AutoBase.UI.Res.Properties;
 
 namespace AutoBase.LocalClient.ViewModel
 {
@@ -50,7 +49,7 @@ namespace AutoBase.LocalClient.ViewModel
         #region Execution 
         private void MakesClickExecute()
         {
-            ActivateWP(new MakesViewModel(this, "", ""));
+            ActivateWP(new MakesViewModel(this, Strings.Makes));
         }
         #endregion
 
@@ -99,8 +98,7 @@ namespace AutoBase.LocalClient.ViewModel
             Settings.Default.Theme = param;
             Settings.Default.Save();
             Globals.DevExpressStyle = param;
-            ThemeManager.SetThemeName(GetWindow(typeof(MainWindow)), param);
-            // 
+            ThemeManager.SetThemeName(GetWindow(typeof(MainWindowViewModel)), param);
         }
 
         #endregion

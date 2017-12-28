@@ -19,10 +19,9 @@ namespace AutoBase.LocalClient.ViewModel
 
         #region Ctor
 
-        public WorkPlaceViewModelBase(MainViewModel mainModel, string displayName, string uniqueId)
+        public WorkPlaceViewModelBase(MainViewModel mainModel, string displayName)
         {
             DisplayName = displayName;
-            _uniqueId = uniqueId;
             _mainModel = mainModel;
             CloseCommand = new RelayCommand(Close);
 

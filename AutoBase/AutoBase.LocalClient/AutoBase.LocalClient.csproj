@@ -111,6 +111,10 @@
     <Compile Include="Controls\AdvDocumentGroup.cs" />
     <Compile Include="Controls\AdvGridControl.cs" />
     <Compile Include="Controls\AdvWindow.cs" />
+    <Compile Include="Dialogs\AddDumpDlg\AddDumpViewModel.cs" />
+    <Compile Include="Dialogs\AddDumpDlg\AddDumpWindow.xaml.cs">
+      <DependentUpon>AddDumpWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Globals.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
@@ -124,6 +128,18 @@
       <DependentUpon>MakesControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="WorkPlaces\MakesWP\MakesViewModel.cs" />
+    <Compile Include="WorkPlaces\ModelsWP\ModelsControl.xaml.cs">
+      <DependentUpon>ModelsControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WorkPlaces\ModelsWP\ModelsViewModel.cs" />
+    <Compile Include="WorkPlaces\ModulesWP\ModulesControl.xaml.cs">
+      <DependentUpon>ModulesControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WorkPlaces\ModulesWP\ModulesViewModel.cs" />
+    <Page Include="Dialogs\AddDumpDlg\AddDumpWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -145,6 +161,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="WorkPlaces\MakesWP\MakesControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WorkPlaces\ModelsWP\ModelsControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WorkPlaces\ModulesWP\ModulesControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -186,6 +210,13 @@
       <Project>{32770fac-28bc-48a4-a080-96f6cc51e3f2}</Project>
       <Name>AutoBase.DAL</Name>
     </ProjectReference>
+    <ProjectReference Include="..\AutoBase.UI.Res\AutoBase.UI.Res.csproj">
+      <Project>{202a8d78-690f-4aec-b565-be3c965f9977}</Project>
+      <Name>AutoBase.UI.Res</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Mercedes.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
