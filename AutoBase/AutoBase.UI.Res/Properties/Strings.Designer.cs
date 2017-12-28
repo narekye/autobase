@@ -61,6 +61,15 @@ namespace AutoBase.UI.Res.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add make.
+        /// </summary>
+        public static string AddMake {
+            get {
+                return ResourceManager.GetString("AddMake", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Browse....
         /// </summary>
         public static string Browse {

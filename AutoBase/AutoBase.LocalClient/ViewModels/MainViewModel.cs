@@ -44,9 +44,23 @@ namespace AutoBase.LocalClient.ViewModel
         {
             get { return _makesClick ?? (_makesClick = new RelayCommand(MakesClickExecute)); }
         }
+
+        private ICommand _addMakeCommand;
+
+        public ICommand AddMakeCommand
+        {
+            get { return _addMakeCommand ?? (_addMakeCommand = new RelayCommand(AddMakeExecute)) }
+        }
+
+
         #endregion
 
         #region Execution 
+        private void AddMakeExecute()
+        {
+            // ShowFromWorkplaceDialog()
+        }
+
         private void MakesClickExecute()
         {
             ActivateWP(new MakesViewModel(this, Strings.Makes));
