@@ -1,6 +1,7 @@
 ﻿using AutoBase.DAL.AutoBaseEntities;
 using System;
 using System.Data.Entity;
+using System.Threading.Tasks;
 
 namespace AutoBase.DAL
 {
@@ -13,5 +14,7 @@ namespace AutoBase.DAL
         TEntity Find<TEntity, TKey>(params object[] keyValues) where TEntity : class where TKey : struct, IComparable, IEquatable<TKey>;
         TEntity Find<TEntity>(params object[] keyValues) where TEntity : class;
         void SetValues(object from, object to);
+        Task Save<TEntity>(TEntity value) where TEntity : class;
+        Task<int> SaveChangesAsync();
     }
 }

@@ -10,18 +10,23 @@ namespace AutoBase.DataProvider
     public class DataProvider : IDataProvider
     {
         private IAutoBaseEntities _dal;
-
+        
         public DataProvider()
         {
             _dal = new AutoBaseEntities();
         }
 
-        public async Task<ObservableCollection<Dump>> Dumps()
+        public void Dispose()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public async Task<ObservableCollection<Dump>> GetDumps()
         {
             return new ObservableCollection<Dump>(await _dal.Dumps.ToListAsync());
         }
 
-        public async Task<ObservableCollection<Make>> Makes()
+        public async Task<ObservableCollection<Make>> GetMakes()
         {
             var data = await _dal.Makes.Include(x => x.Models).Include(x => x.Dumps).OrderBy(x => x.Id).ToListAsync();
             data.ForEach(dt =>
@@ -30,6 +35,14 @@ namespace AutoBase.DataProvider
                 dt.DumpsCount = dt.Dumps.Count;
             });
             return new ObservableCollection<Make>(data);
+        }
+
+        public async Task SaveMakesAsync(ObservableCollection<Make> makes)
+        {
+            foreach (var make in makes)
+            {
+                await _dal.Save(make);
+            }
         }
     }
 }

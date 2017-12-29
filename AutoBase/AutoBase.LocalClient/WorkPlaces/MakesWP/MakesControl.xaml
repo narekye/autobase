@@ -5,11 +5,13 @@
 					 xmlns:dxdo="clr-namespace:DevExpress.Xpf.Docking;assembly=DevExpress.Xpf.Docking.v15.1"
                      xmlns:grid="http://schemas.devexpress.com/winfx/2008/xaml/grid"
                      xmlns:resx="clr-namespace:AutoBase.UI.Res.Properties;assembly=AutoBase.UI.Res"
+                     xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
                      x:Class="AutoBase.LocalClient.WorkPlaces.MakesWP.MakesControl">
 
     <dxb:BarManager x:Name="barManager1">
         <dxb:BarManager.Items>
-            <dxb:BarButtonItem x:Name="addMake" Command="{Binding AddMakeCommand}" Glyph="pack://application:,,,/DevExpress.Images.v15.1;component/Images/Actions/AddItem_16x16.png" />
+            <dxb:BarButtonItem x:Name="addMake" Hint="{x:Static resx:Strings.AddMake}" Command="{Binding AddMakeCommand}" Glyph="pack://application:,,,/DevExpress.Images.v15.1;component/Images/Actions/AddItem_16x16.png" />
+            <dxb:BarButtonItem x:Name="saveMake" Hint="{x:Static resx:Strings.Save}" Command="{Binding SaveMakeCommand}" Glyph="pack://application:,,,/DevExpress.Images.v15.1;component/Images/Actions/AddItem_16x16.png" />
         </dxb:BarManager.Items>
         <dxb:BarManager.Bars>
             <dxb:Bar Caption="Main" UseWholeRow="True" IsMainMenu="True" >
@@ -17,46 +19,55 @@
                     <dxb:BarDockInfo ContainerType="Top" />
                 </dxb:Bar.DockInfo>
                 <dxb:Bar.ItemLinks>
+                    <dxb:BarItemLink BarItemName="saveMake" />
+                    <dxb:BarItemLinkSeparator/>
                     <dxb:BarButtonItemLink BarItemName="addMake" />
+                    <dxb:BarButtonItemLink></dxb:BarButtonItemLink>
                 </dxb:Bar.ItemLinks>
             </dxb:Bar>
         </dxb:BarManager.Bars>
 
         <DockPanel LastChildFill="True" >
             <dxdo:DockLayoutManager >
-                <dxdo:LayoutGroup Orientation="Horizontal" >
+                <dxdo:LayoutGroup Orientation="Horizontal">
                     <dxdo:LayoutGroup Orientation="Vertical">
                         <dxdo:LayoutPanel ItemWidth="*" AllowSizing="True" Caption="{x:Static resx:Strings.Makes}" Style="{StaticResource layoutMainControl}">
                             <Grid x:Name="makesGrid" >
-                                <controls:AdvGridControl  AutoPopulateColumns="False" Grid.Column="0" x:Name="imagesGridControl" SelectionMode="Cell" 
+                                <controls:AdvGridControl x:Name="advGrid" AutoPopulateColumns="False" Grid.Column="0" SelectionMode="Cell" 
 									ItemsSource="{Binding Makes,  Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" >
                                     <controls:AdvGridControl.Columns>
-                                        <grid:GridColumn AllowEditing="False" FieldName="Id"  />
-                                        <grid:GridColumn FieldName="Name" AllowEditing="False" ReadOnly="True" />
-                                        <grid:GridColumn FieldName="ModelsCount" Header="{x:Static resx:Strings.ModelsCount}" />
-                                        <grid:GridColumn FieldName="DumpsCount" Header="{x:Static resx:Strings.DumpsCount}" />
+                                        <grid:GridColumn AllowEditing="False" FieldName="Id" />
 
+                                        <grid:GridColumn AllowEditing="True" FieldName="Name" UnboundType="{Binding}" SortOrder="Ascending" SortIndex="0">
+                                            <grid:GridColumn.EditSettings>
+                                                <dxe:TextEditSettings/>
+                                            </grid:GridColumn.EditSettings>
+                                        </grid:GridColumn>
+
+                                        <grid:GridColumn FieldName="ModelsCount" AllowEditing="True" ReadOnly="False" Header="{x:Static resx:Strings.ModelsCount}" />
+                                        <grid:GridColumn FieldName="DumpsCount" Header="{x:Static resx:Strings.DumpsCount}" />
                                     </controls:AdvGridControl.Columns>
+                                    <controls:AdvGridControl.View>
+                                        <grid:TableView 
+                                            AllowEditing="True"
+                                            ShowTotalSummary="True"
+                                            ShowGroupPanel="False" 
+                                            AllowColumnFiltering="False"
+                            				AutoWidth="False"
+                                            ClipboardCopyWithHeaders="False"
+                                            EditorShowMode ="MouseDown" 
+                                            
+											EnableImmediatePosting="True" AllowPerPixelScrolling="False"/>
+                                    </controls:AdvGridControl.View>
                                     <controls:AdvGridControl.TotalSummary>
                                         <grid:GridSummaryItem FieldName="Id" ShowInColumn="Id" DisplayFormat="n0" SummaryType="Count" />
                                         <!--<grid:GridSummaryItem FieldName="ModelsCount" ShowInColumn="ModelsCount" DisplayFormat="n0" SummaryType="Count" />-->
                                     </controls:AdvGridControl.TotalSummary>
-
-                                    <controls:AdvGridControl.View>
-                                        <grid:TableView ShowTotalSummary="True" ShowGroupPanel="False" 
-											AutoWidth="False"
-											AllowEditing="False"
-                                            MultiSelectMode="Cell"
-                                            ClipboardCopyWithHeaders="False"
-											 />
-                                    </controls:AdvGridControl.View>
-
                                 </controls:AdvGridControl>
-                                <!--<dx:WaitIndicator DeferedVisibility="{Binding IsImagesLoading, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay, Delay=250}"  />-->
                             </Grid>
                         </dxdo:LayoutPanel>
                     </dxdo:LayoutGroup>
-                    <dxdo:LayoutPanel ItemWidth="200"  AllowClose="False">
+                    <!--<dxdo:LayoutPanel ItemWidth="200"  AllowClose="False">
                         <ScrollViewer VerticalScrollBarVisibility="Auto" >
                             <Grid >
                                 <Grid.RowDefinitions>
@@ -65,7 +76,8 @@
                                     <RowDefinition Height="Auto" />
                                 </Grid.RowDefinitions>
 
-                                <!--<StackPanel Orientation="Vertical" Margin="5">
+                                -->
+                    <!--<StackPanel Orientation="Vertical" Margin="5">
                                     <dxdo:LayoutGroup Grid.Row="0" Orientation="Vertical" Grid.ColumnSpan="2" >
 
                                         <dxdo:LayoutControlItem  CaptionLocation="Top">
@@ -83,7 +95,7 @@
                                                 </grid:LookUpEdit.StyleSettings>
 
                                                 -->
-                                <!--<grid:LookUpEdit.PopupContentTemplate>
+                    <!--<grid:LookUpEdit.PopupContentTemplate>
                                                     <ControlTemplate>
                                                         <grid:GridControl x:Name="PART_GridControl">
                                                             <grid:GridControl.Columns>
@@ -97,7 +109,7 @@
                                                         </grid:GridControl>
                                                     </ControlTemplate>
                                                 </grid:LookUpEdit.PopupContentTemplate>-->
-                                <!--
+                    <!--
 
                                                 <dxe:ButtonInfo ButtonKind="Simple" GlyphKind="Cancel"
 												Command="{Binding DataContext.DeletePartnerCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}}"
@@ -120,7 +132,7 @@
                                                 </grid:LookUpEdit.StyleSettings>
 
                                                 -->
-                                <!--<grid:LookUpEdit.PopupContentTemplate>
+                    <!--<grid:LookUpEdit.PopupContentTemplate>
                                                     <ControlTemplate>
                                                         <grid:GridControl x:Name="PART_GridControl">
                                                             <grid:GridControl.Columns>
@@ -133,7 +145,7 @@
                                                         </grid:GridControl>
                                                     </ControlTemplate>
                                                 </grid:LookUpEdit.PopupContentTemplate>-->
-                                <!--
+                    <!--
 
                                                 <dxe:ButtonInfo ButtonKind="Simple" GlyphKind="Cancel"
 												Command="{Binding DataContext.DeleteObjectTypeCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}}"
@@ -174,17 +186,17 @@
 
                                     </dxdo:LayoutGroup>
                                 </StackPanel>-->
-                                
-                                <StackPanel Grid.Row="1" Margin="10" HorizontalAlignment="Right" Orientation="Horizontal" Grid.ColumnSpan="2" >
+
+                    <!--<StackPanel Grid.Row="1" Margin="10" HorizontalAlignment="Right" Orientation="Horizontal" Grid.ColumnSpan="2" >
                                     <Button Content="OK" Command="{Binding OkButtonCommand}" Style="{StaticResource dialogButton}"/>
                                     <Button Content="Cancel" Command="{Binding ClearButtonCommand}" Style="{ StaticResource dialogButton}"/>
-                                </StackPanel>
+                                </StackPanel>-->
+                    <!--
                             </Grid>
                         </ScrollViewer>
-                    </dxdo:LayoutPanel>
+                    </dxdo:LayoutPanel>-->
                 </dxdo:LayoutGroup>
             </dxdo:DockLayoutManager>
-
         </DockPanel>
     </dxb:BarManager>
 </controls:AdvControl>

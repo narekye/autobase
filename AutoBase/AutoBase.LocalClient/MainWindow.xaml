@@ -57,12 +57,7 @@
             <dxb:BarButtonItem x:Name="addMake" Content="{x:Static resx:Strings.AddMake}" Command="{Binding AddMakeCommand}" />
             <dxb:BarButtonItem x:Name="viewMakes" Content="{x:Static resx:Strings.Browse}" Command="{Binding ViewMakesCommand}"/>
 
-            <dxb:BarSubItem x:Name="bMakesMain" Content="{x:Static resx:Strings.Makes}" Command="{Binding MakesClick}" >
-                <dxb:BarSubItem.ItemLinks>
-                    <dxb:BarButtonItemLink BarItemName="addMake" />
-                    <dxb:BarButtonItemLink BarItemName="viewMakes" />
-                </dxb:BarSubItem.ItemLinks>
-            </dxb:BarSubItem>
+            <dxb:BarSubItem x:Name="bMakesMain" Content="{x:Static resx:Strings.Makes}" Command="{Binding MakesClick}" />
 
             <!--Themes-->
             <dxb:BarSubItem x:Name="bThemes" Content="{x:Static resx:Strings.Themes}" BarItemDisplayMode="Content">
