@@ -7,6 +7,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:dxlc="http://schemas.devexpress.com/winfx/2008/xaml/layoutcontrol"
              xmlns:dxdo="http://schemas.devexpress.com/winfx/2008/xaml/docking"
+             xmlns:dxb="http://schemas.devexpress.com/winfx/2008/xaml/bars"
              d1p1:Ignorable="d"
              xmlns:d1p1="http://schemas.openxmlformats.org/markup-compatibility/2006">
   <Application.Resources>
@@ -24,8 +25,11 @@
         <Style x:Key="rootElement" TargetType="{x:Type FrameworkElement}">
             <Setter Property="Margin" Value="6" />
         </Style>
-
-      <Style TargetType="{x:Type dxdo:BaseLayoutItem}" x:Key="layoutMainControl">
+        <Style TargetType="{x:Type dxb:BarManager}">
+            <Setter Property="ToolbarGlyphSize" Value="Small" />
+            <Setter Property="MDIMergeStyle" Value="Never" />
+        </Style>
+        <Style TargetType="{x:Type dxdo:BaseLayoutItem}" x:Key="layoutMainControl">
             <Setter Property="AllowClose" Value="False" />
             <Setter Property="AllowDock" Value="False" />
             <Setter Property="AllowDrag" Value="False" />
