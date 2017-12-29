@@ -7,12 +7,12 @@
                      xmlns:resx="clr-namespace:AutoBase.UI.Res.Properties;assembly=AutoBase.UI.Res"
                      x:Class="AutoBase.LocalClient.WorkPlaces.MakesWP.MakesControl">
 
-    <dxb:BarManager x:Name="makesBarManager">
+    <dxb:BarManager x:Name="barManager1">
         <dxb:BarManager.Items>
             <dxb:BarButtonItem x:Name="addMake" Command="{Binding AddMakeCommand}" Glyph="pack://application:,,,/DevExpress.Images.v15.1;component/Images/Actions/AddItem_16x16.png" />
         </dxb:BarManager.Items>
         <dxb:BarManager.Bars>
-            <dxb:Bar Caption="Main" UseWholeRow="True" IsMainMenu="True" AllowCustomizationMenu="True">
+            <dxb:Bar Caption="Main" UseWholeRow="True" AllowQuickCustomization="False" ShowDragWidget="False" AllowCustomizationMenu="False" AllowDrop="False">
                 <dxb:Bar.DockInfo>
                     <dxb:BarDockInfo ContainerType="Top" />
                 </dxb:Bar.DockInfo>

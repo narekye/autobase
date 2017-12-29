@@ -57,6 +57,7 @@ namespace AutoBase.LocalClient.ViewModel
         #endregion
 
         #region Execution 
+
         private void AddMakeExecute()
         {
             // ShowFromWorkplaceDialog()
@@ -66,6 +67,7 @@ namespace AutoBase.LocalClient.ViewModel
         {
             ActivateWP(new MakesViewModel(this, Strings.Makes));
         }
+
         #endregion
 
         public ObservableCollection<WorkPlaceViewModelBase> WorkPlaceList
