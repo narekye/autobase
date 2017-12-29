@@ -94,11 +94,11 @@
                 </dxb:Bar.ItemLinks>
             </dxb:Bar>
         </dxb:BarManager.Bars>
-        <dxd:DockLayoutManager ItemsSource="{Binding WorkPlaceList}" x:Name="docManager" FloatingMode="Desktop" FloatingDocumentContainer="DocumentHost"
+        <dxd:DockLayoutManager ItemsSource="{Binding DataContext.WorkPlaceList}" x:Name="docManager" FloatingMode="Desktop" FloatingDocumentContainer="DocumentHost"
                                ClosingBehavior="ImmediatelyRemove" DockItemClosing="DocManager_OnDockItemClosing">
             <dxd:LayoutGroup>
-                <ctrl:AdvDocumentGroup SelectedItem="{Binding Path=CurrWorkPlace, Mode=TwoWay}" x:Name="DocumentHost" ClosingBehavior="ImmediatelyRemove" 
-                                       DestroyOnClosingChildren="False" ClosePageButtonShowMode="InActiveTabPageAndTabControlHeader" ItemsSource="{Binding WorkPlaceList}" />
+                <ctrl:AdvDocumentGroup DestroyOnClosingChildren="False" SelectedItem="{Binding Path=CurrWorkPlace, Mode=TwoWay}" x:Name="DocumentHost" ClosingBehavior="ImmediatelyRemove" 
+                                        ClosePageButtonShowMode="InActiveTabPageAndTabControlHeader" ItemsSource="{Binding WorkPlaceList}" />
             </dxd:LayoutGroup>
         </dxd:DockLayoutManager>
     </dxb:BarManager>

@@ -26,6 +26,7 @@ namespace AutoBase.LocalClient.ViewModel
 
         public MainViewModel()
         {
+            if (IsInDesignMode) return;
             WorkPlaceList = new ObservableCollection<WorkPlaceViewModelBase>();
         }
 
@@ -86,7 +87,7 @@ namespace AutoBase.LocalClient.ViewModel
                 return;
             }
             await givenWindow.StartUp();
-            WorkPlaceList.Add(givenWindow); 
+            WorkPlaceList.Add(givenWindow);
             CurrWorkPlace = givenWindow;
         }
 

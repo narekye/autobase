@@ -4,6 +4,7 @@ using System;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
 using AutoBase.DAL.AutoBaseEntities;
+using System.Threading.Tasks;
 
 namespace AutoBase.LocalClient.WorkPlaces.MakesWP
 {
@@ -13,7 +14,7 @@ namespace AutoBase.LocalClient.WorkPlaces.MakesWP
 
         public MakesViewModel(MainViewModel place, string displayName) : base(place, displayName)
         {
-            LoadControl();
+            
         }
 
         #region Properties 
@@ -57,6 +58,13 @@ namespace AutoBase.LocalClient.WorkPlaces.MakesWP
         private async void LoadControl()
         {
             Makes = await Globals.DataProvider.Makes();
+        }
+
+        public async override Task StartUp()
+        {
+            await base.StartUp();
+            if (IsInDesignMode) return;
+            LoadControl();
         }
 
         #endregion
