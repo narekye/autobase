@@ -18,6 +18,7 @@ namespace AutoBase.DAL.AutoBaseEntities
         public AutoBaseEntities()
             : base("name=AutoBaseEntities")
         {
+            Configuration.LazyLoadingEnabled = false;
         }
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

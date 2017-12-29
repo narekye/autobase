@@ -97,6 +97,15 @@ namespace AutoBase.UI.Res.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Dumps count.
+        /// </summary>
+        public static string DumpsCount {
+            get {
+                return ResourceManager.GetString("DumpsCount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Makes.
         /// </summary>
         public static string Makes {
@@ -111,6 +120,15 @@ namespace AutoBase.UI.Res.Properties {
         public static string Models {
             get {
                 return ResourceManager.GetString("Models", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Models count.
+        /// </summary>
+        public static string ModelsCount {
+            get {
+                return ResourceManager.GetString("ModelsCount", resourceCulture);
             }
         }
         

@@ -1,4 +1,5 @@
 ﻿using AutoBase.DAL;
+using AutoBase.DataProvider;
 
 namespace AutoBase.LocalClient
 {
@@ -6,9 +7,11 @@ namespace AutoBase.LocalClient
     {
         public static IAutoBaseEntities Dal { get; set; }
 
+        public static IDataProvider DataProvider { get; private set; }
         static Globals()
         {
             Dal = new DAL.AutoBaseEntities.AutoBaseEntities();
+            DataProvider = new DataProvider.DataProvider();
         }
 
         private static string _devExpressStyle = "Office2013";

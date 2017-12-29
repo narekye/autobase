@@ -49,7 +49,7 @@ namespace AutoBase.LocalClient.ViewModel
 
         public ICommand AddMakeCommand
         {
-            get { return _addMakeCommand ?? (_addMakeCommand = new RelayCommand(AddMakeExecute)) }
+            get { return _addMakeCommand ?? (_addMakeCommand = new RelayCommand(AddMakeExecute)); }
         }
 
 
@@ -79,14 +79,14 @@ namespace AutoBase.LocalClient.ViewModel
 
         public async void ActivateWP(WorkPlaceViewModelBase givenWindow)
         {
-            if (WorkPlaceList.Any(x => x.DisplayName != null && x.DisplayName.Equals(givenWindow.DisplayName)))
+            if (WorkPlaceList.Any(x => x.DisplayName.Equals(givenWindow.DisplayName)))
             {
                 WorkPlaceViewModelBase configPanel = WorkPlaceList.First(x => x.DisplayName == givenWindow.DisplayName);
                 CurrWorkPlace = configPanel;
                 return;
             }
             await givenWindow.StartUp();
-            WorkPlaceList.Add(givenWindow);
+            WorkPlaceList.Add(givenWindow); 
             CurrWorkPlace = givenWindow;
         }
 

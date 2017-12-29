@@ -130,6 +130,9 @@
     <value>Database</value>
     <comment>Db</comment>
   </data>
+  <data name="DumpsCount" xml:space="preserve">
+    <value>Dumps count</value>
+  </data>
   <data name="Makes" xml:space="preserve">
     <value>Makes</value>
     <comment>Make</comment>
@@ -137,6 +140,9 @@
   <data name="Models" xml:space="preserve">
     <value>Models</value>
     <comment>Models</comment>
+  </data>
+  <data name="ModelsCount" xml:space="preserve">
+    <value>Models count</value>
   </data>
   <data name="Modules" xml:space="preserve">
     <value>Modules</value>

@@ -80,6 +80,7 @@
       <DependentUpon>AutoBaseModel.tt</DependentUpon>
     </Compile>
     <Compile Include="IAutoBaseEntities.cs" />
+    <Compile Include="PartialClasses\Make.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

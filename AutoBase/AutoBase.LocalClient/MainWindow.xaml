@@ -12,7 +12,7 @@
         xmlns:viewModel="clr-namespace:AutoBase.LocalClient.ViewModel"
         xmlns:resx="clr-namespace:AutoBase.UI.Res.Properties;assembly=AutoBase.UI.Res"
         mc:Ignorable="d"
-        Title="Main window" Height="auto" Width="auto">
+        Title="Main window" Height="auto" Width="auto" WindowStartupLocation="CenterScreen">
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -21,7 +21,6 @@
                     <DataTemplate DataType="{x:Type vm:WorkPlaceViewModelBase}">
                         <ContentPresenter Content="{Binding Content}" />
                     </DataTemplate>
-
                     <Style TargetType="dxd:DocumentPanel">
                         <Setter Property="Caption" Value="{Binding DisplayName}" />
                         <Setter Property="CloseCommand" Value="{Binding Path=CloseCommand}" />
@@ -33,9 +32,8 @@
     <Window.DataContext>
         <viewModel:MainViewModel />
     </Window.DataContext>
-    <dxb:BarManager x:Name="barManager" dx:DXSerializer.SerializationID="barManager" AllowCustomization="False" AllowQuickCustomization="False" AllowHotCustomization="False">
+    <dxb:BarManager x:Name="barManager1" dx:DXSerializer.SerializationID="barManager" AllowCustomization="False" >
         <dxb:BarManager.Items>
-
             <dxb:BarButtonItem Name="bDeepBlue" Content="DeepBlue" Command="{Binding ThemeClick}" CommandParameter="DeepBlue" />
             <dxb:BarButtonItem Name="bDXStyle" Content="DXStyle" Command="{Binding ThemeClick}" CommandParameter="DXStyle" />
             <dxb:BarButtonItem Name="bLightGray" Content="LightGray" Command="{Binding ThemeClick}" CommandParameter="LightGray"/>
@@ -58,8 +56,8 @@
             <!--Makes-->
             <dxb:BarButtonItem x:Name="addMake" Content="{x:Static resx:Strings.AddMake}" Command="{Binding AddMakeCommand}" />
             <dxb:BarButtonItem x:Name="viewMakes" Content="{x:Static resx:Strings.Browse}" Command="{Binding ViewMakesCommand}"/>
-            
-            <dxb:BarSubItem x:Name="bMakesMain" Content="{x:Static resx:Strings.Makes}"  >
+
+            <dxb:BarSubItem x:Name="bMakesMain" Content="{x:Static resx:Strings.Makes}" Command="{Binding MakesClick}" >
                 <dxb:BarSubItem.ItemLinks>
                     <dxb:BarButtonItemLink BarItemName="addMake" />
                     <dxb:BarButtonItemLink BarItemName="viewMakes" />
@@ -81,8 +79,12 @@
             <dxb:BarSubItem x:Name="bModules" Content="{x:Static resx:Strings.Modules}" Command="{Binding ModulesClick}" />
             <dxb:BarSubItem x:Name="bModels" Content="{x:Static resx:Strings.Models}" BarItemDisplayMode="Content" />
         </dxb:BarManager.Items>
+        
         <dxb:BarManager.Bars>
-            <dxb:Bar Caption="Main" IsMainMenu="True" UseWholeRow="True" AllowQuickCustomization="False" Cursor="None">
+            <dxb:Bar Caption="Main" IsMainMenu="True" UseWholeRow="True">
+                <dxb:Bar.DockInfo>
+                    <dxb:BarDockInfo ContainerType="Top" />
+                </dxb:Bar.DockInfo>
                 <dxb:Bar.ItemLinks>
                     <dxb:BarSubItemLink Cursor="None" BarItemName="db" />
                     <dxb:BarSubItemLink Cursor="None" BarItemName="bMakesMain" />
@@ -93,10 +95,10 @@
             </dxb:Bar>
         </dxb:BarManager.Bars>
         <dxd:DockLayoutManager ItemsSource="{Binding WorkPlaceList}" x:Name="docManager" FloatingMode="Desktop" FloatingDocumentContainer="DocumentHost"
-                               ClosingBehavior="ImmediatelyRemove" >
+                               ClosingBehavior="ImmediatelyRemove" DockItemClosing="DocManager_OnDockItemClosing">
             <dxd:LayoutGroup>
                 <ctrl:AdvDocumentGroup SelectedItem="{Binding Path=CurrWorkPlace, Mode=TwoWay}" x:Name="DocumentHost" ClosingBehavior="ImmediatelyRemove" 
-                                       DestroyOnClosingChildren="False" ClosePageButtonShowMode="InActiveTabPageAndTabControlHeader" />
+                                       DestroyOnClosingChildren="False" ClosePageButtonShowMode="InActiveTabPageAndTabControlHeader" ItemsSource="{Binding WorkPlaceList}" />
             </dxd:LayoutGroup>
         </dxd:DockLayoutManager>
     </dxb:BarManager>

@@ -3,25 +3,21 @@
 					 xmlns:dxb="clr-namespace:DevExpress.Xpf.Bars;assembly=DevExpress.Xpf.Core.v15.1"                     
 					 xmlns:controls="clr-namespace:AutoBase.LocalClient.Controls"
 					 xmlns:dxdo="clr-namespace:DevExpress.Xpf.Docking;assembly=DevExpress.Xpf.Docking.v15.1"
-					 xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
-					 xmlns:grid="http://schemas.devexpress.com/winfx/2008/xaml/grid"
-					 xmlns:dxlc="http://schemas.devexpress.com/winfx/2008/xaml/layoutcontrol"
-					 xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
-					 x:Class="AutoBase.LocalClient.WorkPlaces.MakesWP.MakesControl"
-					 xmlns:dataPager="http://schemas.devexpress.com/winfx/2008/xaml/editors">
+                     xmlns:grid="http://schemas.devexpress.com/winfx/2008/xaml/grid"
+                     xmlns:resx="clr-namespace:AutoBase.UI.Res.Properties;assembly=AutoBase.UI.Res"
+                     x:Class="AutoBase.LocalClient.WorkPlaces.MakesWP.MakesControl">
 
-    <dxb:BarManager x:Name="ImageBarManager">
-
+    <dxb:BarManager x:Name="makesBarManager">
         <dxb:BarManager.Items>
-            <dxb:BarButtonItem x:Name="Save" Command="{Binding SaveButtonCommand}"  />
+            <dxb:BarButtonItem x:Name="addMake" Command="{Binding AddMakeCommand}" Glyph="pack://application:,,,/DevExpress.Images.v15.1;component/Images/Actions/AddItem_16x16.png" />
         </dxb:BarManager.Items>
         <dxb:BarManager.Bars>
-            <dxb:Bar Caption="Main" UseWholeRow="True">
+            <dxb:Bar Caption="Main" UseWholeRow="True" IsMainMenu="True" AllowCustomizationMenu="True">
                 <dxb:Bar.DockInfo>
-                    <dxb:BarDockInfo />
+                    <dxb:BarDockInfo ContainerType="Top" />
                 </dxb:Bar.DockInfo>
                 <dxb:Bar.ItemLinks>
-                    <dxb:BarButtonItemLink BarItemName="Save" />
+                    <dxb:BarButtonItemLink BarItemName="addMake" />
                 </dxb:Bar.ItemLinks>
             </dxb:Bar>
         </dxb:BarManager.Bars>
@@ -30,119 +26,37 @@
             <dxdo:DockLayoutManager >
                 <dxdo:LayoutGroup Orientation="Horizontal" >
                     <dxdo:LayoutGroup Orientation="Vertical">
-                        <dxdo:LayoutPanel ItemWidth="*"  AllowSizing="True"  >
-                            <Grid x:Name="imagesGrid" >
-                                <!--<controls:AdvGridControl  AutoPopulateColumns="False" Grid.Column="0" x:Name="imagesGridControl" SelectionMode="Cell" Focused="{Binding IsFocused}"
-									ItemsSource="{Binding DataContext.Images, ElementName=dataPager1, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-									SelectedItem="{Binding SelectedImage, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
-
+                        <dxdo:LayoutPanel ItemWidth="*" AllowSizing="True" Caption="{x:Static resx:Strings.Makes}" Style="{StaticResource layoutMainControl}">
+                            <Grid x:Name="makesGrid" >
+                                <controls:AdvGridControl  AutoPopulateColumns="False" Grid.Column="0" x:Name="imagesGridControl" SelectionMode="Cell" 
+									ItemsSource="{Binding Makes,  Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" >
                                     <controls:AdvGridControl.Columns>
-
                                         <grid:GridColumn AllowEditing="False" FieldName="Id"  />
-
-                                        <grid:GridColumn AllowEditing="False" FieldName="Created" ReadOnly="True" Style="{StaticResource dateTimeColumn}" />
-
-                                        <grid:GridColumn AllowEditing="False" FieldName="PartnerId" >
-                                            <grid:GridColumn.EditSettings>
-                                                <grid:LookUpEditSettings ItemsSource="{Binding Partners, Mode=TwoWay}" DisplayMember="Name" ValueMember="Id" AutoPopulateColumns="False" />
-                                            </grid:GridColumn.EditSettings>
-                                        </grid:GridColumn>
-
-                                        <grid:GridColumn FieldName="ObjectType"	>
-                                            <grid:GridColumn.EditSettings>
-                                                <grid:LookUpEditSettings ItemsSource="{Binding ObjectTypes, Mode=TwoWay}" 
-																		 DisplayMember="Name" 
-																		 ValueMember="NumId" 
-																		 AutoPopulateColumns="False">
-                                                    <grid:LookUpEditSettings.PopupContentTemplate>
-                                                        <ControlTemplate>
-                                                            <grid:GridControl x:Name="PART_GridControl">
-                                                                <grid:GridControl.Columns>
-                                                                    <grid:GridColumn FieldName="Name"/>
-                                                                </grid:GridControl.Columns>
-                                                                <grid:GridControl.View>
-                                                                    <grid:TableView AutoWidth="True"
-																		MultiSelectMode="Cell" />
-                                                                </grid:GridControl.View>
-                                                            </grid:GridControl>
-                                                        </ControlTemplate>
-                                                    </grid:LookUpEditSettings.PopupContentTemplate>
-                                                </grid:LookUpEditSettings>
-
-                                            </grid:GridColumn.EditSettings>
-
-                                        </grid:GridColumn>
-
-                                        <grid:GridColumn FieldName="TypeId">
-
-                                            <grid:GridColumn.EditSettings>
-                                                <grid:LookUpEditSettings ItemsSource="{Binding ImageTypes, Mode=TwoWay}" 
-																		 DisplayMember="Name" 
-																		 ValueMember="NumId" 
-																		 AutoPopulateColumns="False">
-                                                    <grid:LookUpEditSettings.PopupContentTemplate>
-                                                        <ControlTemplate>
-                                                            <grid:GridControl x:Name="PART_GridControl">
-                                                                <grid:GridControl.Columns>
-                                                                    <grid:GridColumn FieldName="Name"
-																		 />
-                                                                </grid:GridControl.Columns>
-                                                                <grid:GridControl.View>
-                                                                    <grid:TableView AutoWidth="True"
-																		MultiSelectMode="Cell" />
-                                                                </grid:GridControl.View>
-                                                            </grid:GridControl>
-                                                        </ControlTemplate>
-                                                    </grid:LookUpEditSettings.PopupContentTemplate>
-                                                </grid:LookUpEditSettings>
-
-                                            </grid:GridColumn.EditSettings>
-
-                                        </grid:GridColumn>
-
-                                        <grid:GridColumn AllowEditing="False" FieldName="ObjectId"  />
-
-                                        <grid:GridColumn FieldName="OriginalName" AllowEditing="False" ReadOnly="True" />
-
-                                        <grid:GridColumn AllowEditing="False" FieldName="ImagePath" ReadOnly="True"	 />
-
-                                        <grid:GridColumn FieldName="IsChecked" ReadOnly="False" />
-
-                                        <grid:GridColumn FieldName="IsDeleted" ReadOnly="False"  />
-
-                                        <grid:GridColumn FieldName="Modified" AllowEditing="False" ReadOnly="True" Style="{StaticResource dateTimeColumn}"	/>
-
-                                        <grid:GridColumn FieldName="ModelState" AllowEditing="False" ReadOnly="True" />
+                                        <grid:GridColumn FieldName="Name" AllowEditing="False" ReadOnly="True" />
+                                        <grid:GridColumn FieldName="ModelsCount" Header="{x:Static resx:Strings.ModelsCount}" />
+                                        <grid:GridColumn FieldName="DumpsCount" Header="{x:Static resx:Strings.DumpsCount}" />
 
                                     </controls:AdvGridControl.Columns>
-
                                     <controls:AdvGridControl.TotalSummary>
                                         <grid:GridSummaryItem FieldName="Id" ShowInColumn="Id" DisplayFormat="n0" SummaryType="Count" />
+                                        <!--<grid:GridSummaryItem FieldName="ModelsCount" ShowInColumn="ModelsCount" DisplayFormat="n0" SummaryType="Count" />-->
                                     </controls:AdvGridControl.TotalSummary>
 
                                     <controls:AdvGridControl.View>
-                                        <grid:TableView ShowTotalSummary="True" EditorShowMode ="MouseDown" 
-											EnableImmediatePosting="True"
-											ShowGroupPanel="False" 
+                                        <grid:TableView ShowTotalSummary="True" ShowGroupPanel="False" 
 											AutoWidth="False"
-											AllowEditing="True"
-											MultiSelectMode="Cell"
-											ClipboardCopyWithHeaders="False"
-											DetailHeaderContent="Clients" />
+											AllowEditing="False"
+                                            MultiSelectMode="Cell"
+                                            ClipboardCopyWithHeaders="False"
+											 />
                                     </controls:AdvGridControl.View>
 
-                                </controls:AdvGridControl>-->
-                                <dx:WaitIndicator DeferedVisibility="{Binding IsImagesLoading, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay, Delay=250}"  />
+                                </controls:AdvGridControl>
+                                <!--<dx:WaitIndicator DeferedVisibility="{Binding IsImagesLoading, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay, Delay=250}"  />-->
                             </Grid>
-
                         </dxdo:LayoutPanel>
-
-
-
-
                     </dxdo:LayoutGroup>
                     <dxdo:LayoutPanel ItemWidth="200"  AllowClose="False">
-
                         <ScrollViewer VerticalScrollBarVisibility="Auto" >
                             <Grid >
                                 <Grid.RowDefinitions>
@@ -151,7 +65,7 @@
                                     <RowDefinition Height="Auto" />
                                 </Grid.RowDefinitions>
 
-                                <StackPanel Orientation="Vertical" Margin="5">
+                                <!--<StackPanel Orientation="Vertical" Margin="5">
                                     <dxdo:LayoutGroup Grid.Row="0" Orientation="Vertical" Grid.ColumnSpan="2" >
 
                                         <dxdo:LayoutControlItem  CaptionLocation="Top">
@@ -168,7 +82,8 @@
                                                     <grid:SearchLookUpEditStyleSettings />
                                                 </grid:LookUpEdit.StyleSettings>
 
-                                                <!--<grid:LookUpEdit.PopupContentTemplate>
+                                                -->
+                                <!--<grid:LookUpEdit.PopupContentTemplate>
                                                     <ControlTemplate>
                                                         <grid:GridControl x:Name="PART_GridControl">
                                                             <grid:GridControl.Columns>
@@ -182,6 +97,7 @@
                                                         </grid:GridControl>
                                                     </ControlTemplate>
                                                 </grid:LookUpEdit.PopupContentTemplate>-->
+                                <!--
 
                                                 <dxe:ButtonInfo ButtonKind="Simple" GlyphKind="Cancel"
 												Command="{Binding DataContext.DeletePartnerCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}}"
@@ -203,7 +119,8 @@
                                                     <grid:SearchLookUpEditStyleSettings />
                                                 </grid:LookUpEdit.StyleSettings>
 
-                                                <!--<grid:LookUpEdit.PopupContentTemplate>
+                                                -->
+                                <!--<grid:LookUpEdit.PopupContentTemplate>
                                                     <ControlTemplate>
                                                         <grid:GridControl x:Name="PART_GridControl">
                                                             <grid:GridControl.Columns>
@@ -216,6 +133,7 @@
                                                         </grid:GridControl>
                                                     </ControlTemplate>
                                                 </grid:LookUpEdit.PopupContentTemplate>-->
+                                <!--
 
                                                 <dxe:ButtonInfo ButtonKind="Simple" GlyphKind="Cancel"
 												Command="{Binding DataContext.DeleteObjectTypeCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}}"
@@ -255,7 +173,8 @@
 
 
                                     </dxdo:LayoutGroup>
-                                </StackPanel>
+                                </StackPanel>-->
+                                
                                 <StackPanel Grid.Row="1" Margin="10" HorizontalAlignment="Right" Orientation="Horizontal" Grid.ColumnSpan="2" >
                                     <Button Content="OK" Command="{Binding OkButtonCommand}" Style="{StaticResource dialogButton}"/>
                                     <Button Content="Cancel" Command="{Binding ClearButtonCommand}" Style="{ StaticResource dialogButton}"/>

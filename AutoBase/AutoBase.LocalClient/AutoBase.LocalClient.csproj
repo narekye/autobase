@@ -37,6 +37,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="DevExpress.Data.v15.1, Version=15.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Images.v15.1, Version=15.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\DevExpress 15.1\Components\Bin\Framework\DevExpress.Images.v15.1.dll</HintPath>
+    </Reference>
     <Reference Include="DevExpress.Mvvm.v15.1, Version=15.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Xpf.Core.v15.1, Version=15.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Xpf.Docking.v15.1, Version=15.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
@@ -210,6 +214,10 @@
       <Project>{32770fac-28bc-48a4-a080-96f6cc51e3f2}</Project>
       <Name>AutoBase.DAL</Name>
     </ProjectReference>
+    <ProjectReference Include="..\AutoBase.DataProvider\AutoBase.DataProvider.csproj">
+      <Project>{7A292CBD-E4C9-44C3-87D2-C6BA1CC3511E}</Project>
+      <Name>AutoBase.DataProvider</Name>
+    </ProjectReference>
     <ProjectReference Include="..\AutoBase.UI.Res\AutoBase.UI.Res.csproj">
       <Project>{202a8d78-690f-4aec-b565-be3c965f9977}</Project>
       <Name>AutoBase.UI.Res</Name>
@@ -217,6 +225,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\Mercedes.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Dialogs\AddMakeDlg\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -8,7 +8,6 @@ namespace AutoBase.DAL.AutoBaseEntities
            where TEntity : class
            where TKey : struct, IComparable, IEquatable<TKey>
         {
-
             return Find<TEntity>(keyValues);
         }
 
