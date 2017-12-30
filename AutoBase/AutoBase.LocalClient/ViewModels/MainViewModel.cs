@@ -6,7 +6,6 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows.Input;
 using AutoBase.UI.Res.Properties;
-using System;
 using AutoBase.LocalClient.WorkPlaces.DumpsWP;
 using AutoBase.LocalClient.WorkPlaces.ModelsWP;
 using AutoBase.LocalClient.WorkPlaces.ModulesWP;
@@ -16,7 +15,9 @@ namespace AutoBase.LocalClient.ViewModel
     public class MainViewModel : ViewModelBase
     {
         private static ObservableCollection<WorkPlaceViewModelBase> _workPlaceList;
+
         private WorkPlaceViewModelBase _currWorkPlace;
+
         public WorkPlaceViewModelBase CurrWorkPlace
         {
             get { return _currWorkPlace; }
@@ -31,6 +32,7 @@ namespace AutoBase.LocalClient.ViewModel
         public MainViewModel()
         {
             if (IsInDesignMode) return;
+            ThemeManager.SetThemeName(GetWindow(typeof(MainWindowViewModel)), Globals.DevExpressStyle);
             WorkPlaceList = new ObservableCollection<WorkPlaceViewModelBase>();
         }
 

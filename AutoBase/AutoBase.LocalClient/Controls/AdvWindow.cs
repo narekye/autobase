@@ -17,7 +17,7 @@ namespace AutoBase.LocalClient.Controls
         {
             try
             {
-                ThemeManager.SetThemeName(this, "MetropolisDark");
+                ThemeManager.SetThemeName(this, Globals.DevExpressStyle);
             }
             catch (Exception)
             {

@@ -1,4 +1,5 @@
-﻿using AutoBase.DAL.AutoBaseEntities;
+﻿using AutoBase.Common;
+using AutoBase.DAL.AutoBaseEntities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +11,7 @@ namespace AutoBase.LocalClient.Converters
     {
         public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
-            string retval = "Empty";
+            string retval = Constants.Empty; ;
             if (value is IEnumerable<Model>)
             {
                 IEnumerable<string> namesList = (value as IEnumerable<Model>).Select(x => x.ModelName);

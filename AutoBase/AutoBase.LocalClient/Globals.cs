@@ -14,7 +14,7 @@ namespace AutoBase.LocalClient
             DataProvider = new DataProvider.DataProvider();
         }
 
-        private static string _devExpressStyle = "Office2013";
+        private static string _devExpressStyle = "DeepBlue";
 
         public static string DevExpressStyle
         {

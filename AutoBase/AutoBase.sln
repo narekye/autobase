@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27130.2010
+VisualStudioVersion = 15.0.26730.16
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "AutoBase.DB", "AutoBase.DB\AutoBase.DB.sqlproj", "{79268EB7-AEAD-4DCE-92CF-95178D5DFCEE}"
 EndProject
@@ -12,6 +12,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoBase.UI.Res", "AutoBase.UI.Res\AutoBase.UI.Res.csproj", "{202A8D78-690F-4AEC-B565-BE3C965F9977}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoBase.DataProvider", "AutoBase.DataProvider\AutoBase.DataProvider.csproj", "{7A292CBD-E4C9-44C3-87D2-C6BA1CC3511E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoBase.Common", "AutoBase.Common\AutoBase.Common.csproj", "{B8A80432-4B26-45E2-B222-9748CCCC17E0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,6 +43,10 @@ Global
 		{7A292CBD-E4C9-44C3-87D2-C6BA1CC3511E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7A292CBD-E4C9-44C3-87D2-C6BA1CC3511E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7A292CBD-E4C9-44C3-87D2-C6BA1CC3511E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B8A80432-4B26-45E2-B222-9748CCCC17E0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B8A80432-4B26-45E2-B222-9748CCCC17E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B8A80432-4B26-45E2-B222-9748CCCC17E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B8A80432-4B26-45E2-B222-9748CCCC17E0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
