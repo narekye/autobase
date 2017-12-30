@@ -81,6 +81,7 @@
     </Compile>
     <Compile Include="IAutoBaseEntities.cs" />
     <Compile Include="PartialClasses\Make.cs" />
+    <Compile Include="PartialClasses\Model.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

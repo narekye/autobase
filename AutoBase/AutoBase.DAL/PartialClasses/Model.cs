@@ -1,14 +1,13 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace AutoBase.DAL.AutoBaseEntities
 {
-    public partial class Make : IConvertible
+    public partial class Model : IConvertible
     {
-        public long DumpsCount { get; set; }
-
         public TypeCode GetTypeCode()
         {
-            throw new NotImplementedException();
+            return TypeCode.Empty;
         }
 
         public bool ToBoolean(IFormatProvider provider)
@@ -68,29 +67,32 @@ namespace AutoBase.DAL.AutoBaseEntities
 
         public string ToString(IFormatProvider provider)
         {
-            throw new NotImplementedException();
-            
+            // throw new NotImplementedException();
+            // return this.M
+            return this.ModelName;
         }
 
         public object ToType(Type conversionType, IFormatProvider provider)
         {
-            return new object();
-            // throw new NotImplementedException();
+            return new List<Model>();
         }
 
         public ushort ToUInt16(IFormatProvider provider)
         {
+            // throw new NotImplementedException();
             return 0;
         }
 
         public uint ToUInt32(IFormatProvider provider)
         {
+            // throw new NotImplementedException();
             return 0;
         }
 
         public ulong ToUInt64(IFormatProvider provider)
         {
             return 0;
+            // throw new NotImplementedException();
         }
     }
 }

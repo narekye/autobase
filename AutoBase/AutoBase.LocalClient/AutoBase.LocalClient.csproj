@@ -115,9 +115,14 @@
     <Compile Include="Controls\AdvDocumentGroup.cs" />
     <Compile Include="Controls\AdvGridControl.cs" />
     <Compile Include="Controls\AdvWindow.cs" />
+    <Compile Include="Converters\ModelConverter.cs" />
     <Compile Include="Dialogs\AddDumpDlg\AddDumpViewModel.cs" />
     <Compile Include="Dialogs\AddDumpDlg\AddDumpWindow.xaml.cs">
       <DependentUpon>AddDumpWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\AddMakeDlg\AddMakeViewModel.cs" />
+    <Compile Include="Dialogs\AddMakeDlg\AddMakeWindow.xaml.cs">
+      <DependentUpon>AddMakeWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Globals.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
@@ -141,6 +146,10 @@
     </Compile>
     <Compile Include="WorkPlaces\ModulesWP\ModulesViewModel.cs" />
     <Page Include="Dialogs\AddDumpDlg\AddDumpWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Dialogs\AddMakeDlg\AddMakeWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -226,9 +235,7 @@
   <ItemGroup>
     <Resource Include="Images\Mercedes.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Dialogs\AddMakeDlg\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

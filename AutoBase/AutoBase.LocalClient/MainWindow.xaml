@@ -44,20 +44,11 @@
             <dxb:BarButtonItem Name="bOffice2007Silver" Content="Office2007Silver" Command="{Binding ThemeClick}" CommandParameter="Office2007Silver" />
             <dxb:BarButtonItem Name="bOffice2010Black" Content="Office2010Black" Command="{Binding ThemeClick}" CommandParameter="Office2010Black" />
             <dxb:BarButtonItem Name="bOffice2010Blue" Content="Office2010Blue" Command="{Binding ThemeClick}" CommandParameter="Office2010Blue" />
-
-            <dxb:BarSubItem x:Name="db" Content="Database" BarItemDisplayMode="Content">
-                <dxb:BarSubItem.Resources>
-                    <Style TargetType="{x:Type dxb:BarSubItem}">
-                        <Setter Property="IsVisible" Value="True" />
-                    </Style>
-                </dxb:BarSubItem.Resources>
-            </dxb:BarSubItem>
-
-            <!--Makes-->
-            <dxb:BarButtonItem x:Name="addMake" Content="{x:Static resx:Strings.AddMake}" Command="{Binding AddMakeCommand}" />
-            <dxb:BarButtonItem x:Name="viewMakes" Content="{x:Static resx:Strings.Browse}" Command="{Binding ViewMakesCommand}"/>
-
+            
+            <!--Tables-->
             <dxb:BarSubItem x:Name="bMakesMain" Content="{x:Static resx:Strings.Makes}" Command="{Binding MakesClick}" />
+            <dxb:BarSubItem x:Name="bModules" Content="{x:Static resx:Strings.Modules}" Command="{Binding ModulesClick}" />
+            <dxb:BarSubItem x:Name="bModels" Content="{x:Static resx:Strings.Models}" Command="{Binding ModelsClick}" />
 
             <!--Themes-->
             <dxb:BarSubItem x:Name="bThemes" Content="{x:Static resx:Strings.Themes}" BarItemDisplayMode="Content">
@@ -71,10 +62,9 @@
                     <dxb:BarButtonItemLink BarItemName="bOffice2007Blue" />
                 </dxb:BarSubItem.ItemLinks>
             </dxb:BarSubItem>
-            <dxb:BarSubItem x:Name="bModules" Content="{x:Static resx:Strings.Modules}" Command="{Binding ModulesClick}" />
-            <dxb:BarSubItem x:Name="bModels" Content="{x:Static resx:Strings.Models}" BarItemDisplayMode="Content" />
+
         </dxb:BarManager.Items>
-        
+
         <dxb:BarManager.Bars>
             <dxb:Bar Caption="Main" IsMainMenu="True" UseWholeRow="True">
                 <dxb:Bar.DockInfo>

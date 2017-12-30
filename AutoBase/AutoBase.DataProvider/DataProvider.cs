@@ -29,11 +29,6 @@ namespace AutoBase.DataProvider
         public async Task<ObservableCollection<Make>> GetMakes()
         {
             var data = await _dal.Makes.Include(x => x.Models).Include(x => x.Dumps).OrderBy(x => x.Id).ToListAsync();
-            data.ForEach(dt =>
-            {
-                dt.ModelsCount = dt.Models.Count;
-                dt.DumpsCount = dt.Dumps.Count;
-            });
             return new ObservableCollection<Make>(data);
         }
 

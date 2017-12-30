@@ -4,7 +4,6 @@ using System.Collections.ObjectModel;
 using System.Windows.Input;
 using AutoBase.DAL.AutoBaseEntities;
 using System.Threading.Tasks;
-using System;
 
 namespace AutoBase.LocalClient.WorkPlaces.MakesWP
 {

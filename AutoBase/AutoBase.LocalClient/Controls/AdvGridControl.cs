@@ -33,7 +33,7 @@ namespace AutoBase.LocalClient.Controls
         {
             for (int i = 0; i < Columns.Count; i++)
             {
-                Columns.ElementAt(i).ReadOnly = true;
+                Columns.ElementAt(i).ReadOnly = false;
             }
         }
     }

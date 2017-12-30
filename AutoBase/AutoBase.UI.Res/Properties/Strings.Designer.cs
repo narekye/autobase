@@ -106,6 +106,15 @@ namespace AutoBase.UI.Res.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Dumps.
+        /// </summary>
+        public static string Dumps {
+            get {
+                return ResourceManager.GetString("Dumps", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Dumps count.
         /// </summary>
         public static string DumpsCount {

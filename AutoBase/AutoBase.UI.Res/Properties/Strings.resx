@@ -133,6 +133,9 @@
     <value>Database</value>
     <comment>Db</comment>
   </data>
+  <data name="Dumps" xml:space="preserve">
+    <value>Dumps</value>
+  </data>
   <data name="DumpsCount" xml:space="preserve">
     <value>Dumps count</value>
   </data>

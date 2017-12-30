@@ -6,6 +6,10 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows.Input;
 using AutoBase.UI.Res.Properties;
+using System;
+using AutoBase.LocalClient.WorkPlaces.DumpsWP;
+using AutoBase.LocalClient.WorkPlaces.ModelsWP;
+using AutoBase.LocalClient.WorkPlaces.ModulesWP;
 
 namespace AutoBase.LocalClient.ViewModel
 {
@@ -46,11 +50,25 @@ namespace AutoBase.LocalClient.ViewModel
             get { return _makesClick ?? (_makesClick = new RelayCommand(MakesClickExecute)); }
         }
 
-        private ICommand _addMakeCommand;
+        private ICommand _dumpsClick;
 
-        public ICommand AddMakeCommand
+        public ICommand DumpsClick
         {
-            get { return _addMakeCommand ?? (_addMakeCommand = new RelayCommand(AddMakeExecute)); }
+            get { return _dumpsClick ?? (_dumpsClick = new RelayCommand(DumpsClickExecute)); }
+        }
+
+        private ICommand _modelsClick;
+
+        public ICommand ModelsClick
+        {
+            get { return _modelsClick ?? (_modelsClick = new RelayCommand(ModelsClickExecute)); }
+        }
+
+        private ICommand _modulesClick;
+
+        public ICommand ModulesClick
+        {
+            get { return _modulesClick ?? (_modulesClick = new RelayCommand(ModulesClickExecute)); }
         }
 
 
@@ -58,9 +76,9 @@ namespace AutoBase.LocalClient.ViewModel
 
         #region Execution 
 
-        private void AddMakeExecute()
+        private void DumpsClickExecute()
         {
-            // ShowFromWorkplaceDialog()
+            ActivateWP(new DumpsViewModel(this, Strings.Dumps));
         }
 
         private void MakesClickExecute()
@@ -68,6 +86,15 @@ namespace AutoBase.LocalClient.ViewModel
             ActivateWP(new MakesViewModel(this, Strings.Makes));
         }
 
+        private void ModelsClickExecute()
+        {
+            ActivateWP(new ModelsViewModel(this, Strings.Models));
+        }
+
+        private void ModulesClickExecute()
+        {
+            ActivateWP(new ModulesViewModel(this, Strings.Modules));
+        }
         #endregion
 
         public ObservableCollection<WorkPlaceViewModelBase> WorkPlaceList
