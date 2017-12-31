@@ -154,6 +154,9 @@
     <value>Modules</value>
     <comment>Modules</comment>
   </data>
+  <data name="Name" xml:space="preserve">
+    <value>Name</value>
+  </data>
   <data name="Ok" xml:space="preserve">
     <value>Ok</value>
     <comment>Ok button</comment>

@@ -7,6 +7,7 @@
                      xmlns:resx="clr-namespace:AutoBase.UI.Res.Properties;assembly=AutoBase.UI.Res"
                      xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
                      xmlns:converter="clr-namespace:AutoBase.LocalClient.Converters"
+                     xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
                      x:Class="AutoBase.LocalClient.WorkPlaces.MakesWP.MakesControl">
 
     <controls:AdvControl.Resources>
@@ -16,7 +17,7 @@
     <dxb:BarManager x:Name="barManager1">
         <dxb:BarManager.Items>
             <dxb:BarButtonItem x:Name="addMake" Hint="{x:Static resx:Strings.AddMake}" Command="{Binding AddMakeCommand}" Glyph="pack://application:,,,/DevExpress.Images.v15.1;component/Images/Actions/AddItem_16x16.png" />
-            <dxb:BarButtonItem x:Name="saveMake" Hint="{x:Static resx:Strings.Save}" Command="{Binding SaveMakeCommand}" Glyph="pack://application:,,,/DevExpress.Images.v15.1;component/Images/Actions/AddItem_16x16.png" />
+            <dxb:BarButtonItem x:Name="saveMake" Hint="{x:Static resx:Strings.Save}" Command="{Binding SaveMakeCommand}" Glyph="{dx:DXImage Image=Save_16x16.png}" />
         </dxb:BarManager.Items>
         <dxb:BarManager.Bars>
             <dxb:Bar Caption="Main" UseWholeRow="True" IsMainMenu="True" >
@@ -27,7 +28,7 @@
                     <dxb:BarItemLink BarItemName="saveMake" />
                     <dxb:BarItemLinkSeparator/>
                     <dxb:BarButtonItemLink BarItemName="addMake" />
-                    <dxb:BarButtonItemLink></dxb:BarButtonItemLink>
+                    <dxb:BarButtonItemLink/>
                 </dxb:Bar.ItemLinks>
             </dxb:Bar>
         </dxb:BarManager.Bars>
@@ -43,7 +44,7 @@
                                     <controls:AdvGridControl.Columns>
                                         <grid:GridColumn AllowEditing="False" FieldName="Id" />
 
-                                        <grid:GridColumn AllowEditing="True" FieldName="Name" SortOrder="Ascending" SortIndex="0">
+                                        <grid:GridColumn AllowEditing="True" FieldName="Name">
                                             <grid:GridColumn.EditSettings>
                                                 <dxe:TextEditSettings/>
                                             </grid:GridColumn.EditSettings>
@@ -54,20 +55,19 @@
                                                     <grid:LookUpEdit IsTextEditable="False"
                                                                      Text="Models"
                                                                      IsReadOnly="True"
-                                                                     Name="PART_Editor"
+                                                                     x:Name="PART_Editor"
                                                                      ItemsSource="{Binding RowData.Row.Models}"
                                                                      DisplayTextConverter="{StaticResource modelConverter}"
                                                                      AutoPopulateColumns="False">
                                                         <grid:LookUpEdit.PopupContentTemplate>
                                                             <ControlTemplate>
-                                                                <grid:GridControl Name="PART_GridControl">
+                                                                <grid:GridControl x:Name="PART_GridControl">
                                                                     <grid:GridControl.Columns>
-                                                                        <grid:GridColumn Header="{x:Static resx:Strings.Cancel}" FieldName="ModelName" />
+                                                                        <grid:GridColumn Header="{x:Static resx:Strings.Name}" FieldName="ModelName" />
                                                                     </grid:GridControl.Columns>
 
                                                                     <grid:GridControl.TotalSummary>
                                                                         <grid:GridSummaryItem FieldName="ModelName" ShowInColumn="ModelName" DisplayFormat="n0" SummaryType="Count" />
-                                                                        <!--<grid:GridSummaryItem FieldName="ModelsCount" ShowInColumn="ModelsCount" DisplayFormat="n0" SummaryType="Count" />-->
                                                                     </grid:GridControl.TotalSummary>
 
                                                                     <grid:GridControl.View>
@@ -234,6 +234,7 @@
                     </dxdo:LayoutPanel>-->
                 </dxdo:LayoutGroup>
             </dxdo:DockLayoutManager>
+           
         </DockPanel>
     </dxb:BarManager>
 </controls:AdvControl>

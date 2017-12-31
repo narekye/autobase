@@ -10,7 +10,7 @@ namespace AutoBase.DataProvider
     public class DataProvider : IDataProvider
     {
         private IAutoBaseEntities _dal;
-        
+
         public DataProvider()
         {
             _dal = new AutoBaseEntities();
@@ -32,12 +32,9 @@ namespace AutoBase.DataProvider
             return new ObservableCollection<Make>(data);
         }
 
-        public async Task SaveMakesAsync(ObservableCollection<Make> makes)
+        public async Task SaveMakeAsync(Make make)
         {
-            foreach (var make in makes)
-            {
-                await _dal.Save(make);
-            }
+            await _dal.Save(make);
         }
     }
 }

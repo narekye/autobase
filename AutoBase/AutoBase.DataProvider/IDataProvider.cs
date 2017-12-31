@@ -9,6 +9,6 @@ namespace AutoBase.DataProvider
     {
         Task<ObservableCollection<Dump>> GetDumps();
         Task<ObservableCollection<Make>> GetMakes();
-        Task SaveMakesAsync(ObservableCollection<Make> makes);
+        Task SaveMakeAsync(Make makee);
     }
 }

@@ -5,18 +5,29 @@ namespace AutoBase.DAL.AutoBaseEntities
 {
     public partial class AutoBaseEntities : IAutoBaseEntities
     {
-        public async Task Save<TEntity>(TEntity value) where TEntity : class                  
+        public AutoBaseEntities(string param) : base()
+        {
+            Configuration.AutoDetectChangesEnabled = false;
+        }
+
+        public async Task Save<TEntity>(TEntity value) where TEntity : class
         {
             var state = Entry<TEntity>(value).State;
+
+            if (state == System.Data.Entity.EntityState.Unchanged) return;
+
             if (state == System.Data.Entity.EntityState.Detached)
             {
                 Set<TEntity>().Add(value);
             }
+
             else if (state == System.Data.Entity.EntityState.Deleted)
             {
                 Set<TEntity>().Remove(value);
             }
+
             await SaveChangesAsync();
+            // await SaveChangesAsync();
         }
 
         public TEntity Find<TEntity, TKey>(params object[] keyValues)
@@ -38,12 +49,7 @@ namespace AutoBase.DAL.AutoBaseEntities
 
         public new async Task<int> SaveChangesAsync()
         {
-            ChangeTracker.DetectChanges();
-            if (ChangeTracker.HasChanges())
-            {
-                return await SaveChangesAsync();
-            }
-            return 0;
+            return await SaveChangesAsync();
         }
     }
 }

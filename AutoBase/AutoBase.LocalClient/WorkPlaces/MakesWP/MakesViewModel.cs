@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Windows.Input;
 using AutoBase.DAL.AutoBaseEntities;
 using System.Threading.Tasks;
+using System.Linq;
 
 namespace AutoBase.LocalClient.WorkPlaces.MakesWP
 {
@@ -60,8 +61,9 @@ namespace AutoBase.LocalClient.WorkPlaces.MakesWP
 
         private async void SaveMakeExecute()
         {
-            await Globals.DataProvider.SaveMakesAsync(Makes);
+            await Globals.DataProvider.SaveMakeAsync(Makes.Last());
         }
+
         #endregion
 
         #region Private methods 
