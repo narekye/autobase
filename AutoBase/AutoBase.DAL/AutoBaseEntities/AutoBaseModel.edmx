@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="AutoBaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="AutoBaseDbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Dump">
           <Key>
             <PropertyRef Name="Id" />
@@ -88,7 +88,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="AutoBaseModelStoreContainer">
+        <EntityContainer Name="AutoBaseDbModelStoreContainer">
           <EntitySet Name="Dump" EntityType="Self.Dump" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Make" EntityType="Self.Make" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Model" EntityType="Self.Model" Schema="dbo" store:Type="Tables" />
@@ -114,7 +114,7 @@
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="AutoBaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="AutoBaseDbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="Dump">
           <Key>
             <PropertyRef Name="Id" />
@@ -233,9 +233,9 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="AutoBaseModelStoreContainer" CdmEntityContainer="AutoBaseEntities">
+        <EntityContainerMapping StorageEntityContainer="AutoBaseDbModelStoreContainer" CdmEntityContainer="AutoBaseEntities">
           <EntitySetMapping Name="Dumps">
-            <EntityTypeMapping TypeName="AutoBaseModel.Dump">
+            <EntityTypeMapping TypeName="AutoBaseDbModel.Dump">
               <MappingFragment StoreEntitySet="Dump">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="MakeId" ColumnName="MakeId" />
@@ -249,7 +249,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Makes">
-            <EntityTypeMapping TypeName="AutoBaseModel.Make">
+            <EntityTypeMapping TypeName="AutoBaseDbModel.Make">
               <MappingFragment StoreEntitySet="Make">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -257,7 +257,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Models">
-            <EntityTypeMapping TypeName="AutoBaseModel.Model">
+            <EntityTypeMapping TypeName="AutoBaseDbModel.Model">
               <MappingFragment StoreEntitySet="Model">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="MakeId" ColumnName="MakeId" />
@@ -266,7 +266,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Modules">
-            <EntityTypeMapping TypeName="AutoBaseModel.Module">
+            <EntityTypeMapping TypeName="AutoBaseDbModel.Module">
               <MappingFragment StoreEntitySet="Module">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />

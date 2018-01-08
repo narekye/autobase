@@ -66,4 +66,7 @@
     <Build Include="dbo\Tables\Model.sql" />
     <Build Include="dbo\Tables\Dump.sql" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="AutoBase.DB.publish.xml" />
+  </ItemGroup>
 </Project>

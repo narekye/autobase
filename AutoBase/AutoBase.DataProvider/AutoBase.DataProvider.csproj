@@ -52,6 +52,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\AutoBase.Common\AutoBase.Common.csproj">
+      <Project>{b8a80432-4b26-45e2-b222-9748cccc17e0}</Project>
+      <Name>AutoBase.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\AutoBase.DAL\AutoBase.DAL.csproj">
       <Project>{32770fac-28bc-48a4-a080-96f6cc51e3f2}</Project>
       <Name>AutoBase.DAL</Name>

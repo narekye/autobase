@@ -13,7 +13,7 @@ namespace AutoBase.DataProvider
 
         public DataProvider()
         {
-            _dal = new AutoBaseEntities();
+            _dal = new AutoBaseEntities(Common.Constants.DbName);
         }
 
         public void Dispose()

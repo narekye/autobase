@@ -5,9 +5,11 @@ namespace AutoBase.DAL.AutoBaseEntities
 {
     public partial class AutoBaseEntities : IAutoBaseEntities
     {
-        public AutoBaseEntities(string param) : base()
+        public AutoBaseEntities(string dbName) : base(dbName)
         {
             Configuration.AutoDetectChangesEnabled = false;
+            Configuration.LazyLoadingEnabled = false;
+            Configuration.ProxyCreationEnabled = false;
         }
 
         public async Task Save<TEntity>(TEntity value) where TEntity : class
@@ -27,7 +29,6 @@ namespace AutoBase.DAL.AutoBaseEntities
             }
 
             await SaveChangesAsync();
-            // await SaveChangesAsync();
         }
 
         public TEntity Find<TEntity, TKey>(params object[] keyValues)
@@ -49,7 +50,7 @@ namespace AutoBase.DAL.AutoBaseEntities
 
         public new async Task<int> SaveChangesAsync()
         {
-            return await SaveChangesAsync();
+            return await base.SaveChangesAsync();
         }
     }
 }

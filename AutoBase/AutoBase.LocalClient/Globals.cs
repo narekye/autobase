@@ -10,7 +10,7 @@ namespace AutoBase.LocalClient
         public static IDataProvider DataProvider { get; private set; }
         static Globals()
         {
-            Dal = new DAL.AutoBaseEntities.AutoBaseEntities();
+            Dal = new DAL.AutoBaseEntities.AutoBaseEntities(Common.Constants.DbName);
             DataProvider = new DataProvider.DataProvider();
         }
 
