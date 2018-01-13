@@ -11,7 +11,7 @@
     <dxlc:LayoutControl Orientation="Vertical" Style="{StaticResource rootElement}">
         <dxlc:LayoutGroup>
             <dxlc:LayoutItem Label="{x:Static resx:Strings.ModelName}">
-                <dxe:TextEdit EditValue="{Binding ModelName, Mode=TwoWay}" />
+                <dxe:TextEdit EditValue="{Binding ModelName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
             </dxlc:LayoutItem>
         </dxlc:LayoutGroup>
         <dxlc:LayoutGroup MaxHeight="40" VerticalAlignment="Bottom">

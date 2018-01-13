@@ -157,7 +157,7 @@ namespace AutoBase.LocalClient.Dialogs.AddDumpDlg
 
         private bool CanExecuteOkCommand()
         {
-            return SelectedModel != null && !string.IsNullOrEmpty(Year) && !string.IsNullOrEmpty(Memory) && !string.IsNullOrEmpty(BlockNumber);
+            return SelectedPath != null && SelectedModel != null && !string.IsNullOrEmpty(Year) && !string.IsNullOrEmpty(Memory) && !string.IsNullOrEmpty(BlockNumber);
         }
 
         private async void OkBtnExecute()

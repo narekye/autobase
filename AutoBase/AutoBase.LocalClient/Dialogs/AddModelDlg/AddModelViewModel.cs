@@ -1,5 +1,5 @@
 ﻿using AutoBase.DAL.AutoBaseEntities;
-using GalaSoft.MvvmLight.Command;
+using GalaSoft.MvvmLight.CommandWpf;
 using System.Windows.Input;
 using AutoBase.UI.Res.Properties;
 
@@ -13,8 +13,8 @@ namespace AutoBase.LocalClient.Dialogs.AddModelDlg
 
         public AddModelViewModel(Make selectedMake)
         {
-            this._selectedMake = selectedMake;
-            Title = Strings.AddModel + $"/ {_selectedMake.Name}";
+            _selectedMake = selectedMake;
+            Title = Strings.AddModel + $" / {_selectedMake.Name}";
         }
 
         public string Title
@@ -42,10 +42,13 @@ namespace AutoBase.LocalClient.Dialogs.AddModelDlg
 
         public ICommand SaveModelCommand
         {
-            get { return _saveModelCommand ?? (_saveModelCommand = new RelayCommand(SaveModelExecute)); }
+            get { return _saveModelCommand ?? (_saveModelCommand = new RelayCommand(SaveModelExecute, CanSaveModel)); }
         }
 
-        private ICommand _saveBtnCommand;
+        private bool CanSaveModel()
+        {
+            return ModelName != null;
+        }
 
         private void SaveModelExecute()
         {

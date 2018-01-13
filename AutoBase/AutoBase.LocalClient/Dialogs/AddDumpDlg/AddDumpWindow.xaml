@@ -11,7 +11,6 @@
 	WindowStyle="ToolWindow" ResizeMode="NoResize">
     <dxlc:LayoutControl Orientation="Vertical" Style="{StaticResource rootElement}">
         <dxlc:LayoutGroup ItemSpace="10" >
-
             <dxlc:LayoutItem Label="{x:Static resx:Strings.SelectModel}">
                 <dxg:LookUpEdit
                                 ItemsSource="{Binding Models,Mode=TwoWay}"
@@ -33,7 +32,6 @@
                 </dxg:LookUpEdit>
             </dxlc:LayoutItem>
         </dxlc:LayoutGroup>
-
         <dxlc:LayoutGroup ItemSpace="10" >
             <dxlc:LayoutItem Label="{x:Static resx:Strings.SelectECU}">
                 <dxg:LookUpEdit
@@ -55,31 +53,26 @@
                 </dxg:LookUpEdit>
             </dxlc:LayoutItem>
         </dxlc:LayoutGroup>
-
         <dxlc:LayoutGroup>
             <dxlc:LayoutItem Label="{x:Static resx:Strings.Year}">
                 <dxe:TextEdit EditValue="{Binding Year, Mode=TwoWay}" />
             </dxlc:LayoutItem>
         </dxlc:LayoutGroup>
-
         <dxlc:LayoutGroup>
             <dxlc:LayoutItem Label="{x:Static resx:Strings.Memory}">
                 <dxe:TextEdit EditValue="{Binding Memory,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
             </dxlc:LayoutItem>
         </dxlc:LayoutGroup>
-
         <dxlc:LayoutGroup>
             <dxlc:LayoutItem Label="{x:Static resx:Strings.BlockNumber}">
                 <dxe:TextEdit EditValue="{Binding BlockNumber, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
             </dxlc:LayoutItem>
         </dxlc:LayoutGroup>
-
         <dxlc:LayoutGroup Orientation="Horizontal" >
             <dxlc:LayoutItem Label="{x:Static resx:Strings.File}">
                 <dxe:TextEdit EditValue="{Binding SelectedPath, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  Margin="0,5,0,0"/>
             </dxlc:LayoutItem>
         </dxlc:LayoutGroup>
-
         <dxlc:LayoutGroup MaxHeight="40" VerticalAlignment="Bottom">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                 <Button Content="{x:Static resx:Strings.Browse}" Command="{Binding BrowseForFileCommand}" Style="{StaticResource dialogButton}" HorizontalAlignment="Right" ></Button>
