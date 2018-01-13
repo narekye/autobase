@@ -11,24 +11,18 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace AutoBase.LocalClient.WorkPlaces.DumpsWP
+namespace AutoBase.LocalClient.Dialogs.AddModuleDlg
 {
     /// <summary>
-    /// Interaction logic for DumpsControl.xaml
+    /// Interaction logic for AddModuleWindow.xaml
     /// </summary>
-    public partial class DumpsControl : AdvControl
+    public partial class AddModuleWindow : AdvWindow
     {
-        public DumpsControl()
+        public AddModuleWindow()
         {
             InitializeComponent();
-        }
-
-        private void advGrid_MouseDoubleClick(object sender, MouseButtonEventArgs e)
-        {
-            
         }
     }
 }

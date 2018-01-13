@@ -88,6 +88,15 @@ namespace AutoBase.UI.Res.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add module.
+        /// </summary>
+        public static string AddModule {
+            get {
+                return ResourceManager.GetString("AddModule", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Add new make.
         /// </summary>
         public static string AddNewMake {
@@ -169,6 +178,15 @@ namespace AutoBase.UI.Res.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Make name.
+        /// </summary>
+        public static string MakeName {
+            get {
+                return ResourceManager.GetString("MakeName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Makes.
         /// </summary>
         public static string Makes {
@@ -228,6 +246,15 @@ namespace AutoBase.UI.Res.Properties {
         public static string ModuleID {
             get {
                 return ResourceManager.GetString("ModuleID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Module name.
+        /// </summary>
+        public static string ModuleName {
+            get {
+                return ResourceManager.GetString("ModuleName", resourceCulture);
             }
         }
         

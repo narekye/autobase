@@ -127,6 +127,9 @@
   <data name="AddModel" xml:space="preserve">
     <value>Add new model</value>
   </data>
+  <data name="AddModule" xml:space="preserve">
+    <value>Add module</value>
+  </data>
   <data name="AddNewMake" xml:space="preserve">
     <value>Add new make</value>
   </data>
@@ -155,6 +158,9 @@
   <data name="MakeId" xml:space="preserve">
     <value>Make ID</value>
   </data>
+  <data name="MakeName" xml:space="preserve">
+    <value>Make name</value>
+  </data>
   <data name="Makes" xml:space="preserve">
     <value>Makes</value>
     <comment>Make</comment>
@@ -177,6 +183,9 @@
   </data>
   <data name="ModuleID" xml:space="preserve">
     <value>Module ID</value>
+  </data>
+  <data name="ModuleName" xml:space="preserve">
+    <value>Module name</value>
   </data>
   <data name="Modules" xml:space="preserve">
     <value>Modules</value>

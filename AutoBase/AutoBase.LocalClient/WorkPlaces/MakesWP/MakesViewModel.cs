@@ -6,6 +6,7 @@ using AutoBase.DAL.AutoBaseEntities;
 using System.Threading.Tasks;
 using System.Linq;
 using AutoBase.LocalClient.Dialogs.AddModelDlg;
+using AutoBase.LocalClient.Dialogs.AddModuleDlg;
 
 namespace AutoBase.LocalClient.WorkPlaces.MakesWP
 {
@@ -74,7 +75,16 @@ namespace AutoBase.LocalClient.WorkPlaces.MakesWP
             get { return _attachDumpCommad ?? (_attachDumpCommad = new RelayCommand(AttachDumpExecuteAsync, CanExecuteAttachDump)); }
         }
 
+        private ICommand _addModuleCommand;
 
+        public ICommand AddModuleCommand
+        {
+            get { return _addModuleCommand ?? (_addModuleCommand = new RelayCommand(AddModuleExecute)); }
+        }
+
+        #endregion
+
+        #region Execution
         private void AttachDumpExecuteAsync()
         {
             var dataContext = new Dialogs.AddDumpDlg.AddDumpViewModel(SelectedMake);
@@ -87,10 +97,11 @@ namespace AutoBase.LocalClient.WorkPlaces.MakesWP
             return SelectedMake != null;
         }
 
-
-        #endregion
-
-        #region Execution
+        private void AddModuleExecute()
+        {
+            var dataContext = new AddModuleViewModel();
+            ShowFromWorkplaceDialog(new AddModuleWindow { DataContext = dataContext });
+        }
 
         private void AddMakeExecute()
         {
@@ -121,6 +132,7 @@ namespace AutoBase.LocalClient.WorkPlaces.MakesWP
 
         private async void LoadControl()
         {
+            await Task.WhenAll();
             Makes = await Globals.DataProvider.GetMakes();
         }
 

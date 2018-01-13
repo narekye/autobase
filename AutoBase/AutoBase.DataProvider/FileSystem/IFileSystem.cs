@@ -5,5 +5,6 @@ namespace AutoBase.DataProvider.FileSystem
     public interface IFileSystem
     {
         string UploadFileToDestination(string filePath, Dump dump);
+        void DeleteFile(string destination, Dump dump);
     }
 }

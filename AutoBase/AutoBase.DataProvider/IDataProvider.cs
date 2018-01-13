@@ -18,5 +18,7 @@ namespace AutoBase.DataProvider
         Task SaveMakeAsync(Make makee);
         Task<ObservableCollection<Dump>> GetDumpsByFilter(FilterDump filter);
         Task<ObservableCollection<Model>> GetModelsForMake(int makeId);
+        Task SaveModuleAsync(Module module);
+        Task RemoveDump(Dump dump);
     }
 }

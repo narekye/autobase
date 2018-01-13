@@ -14,7 +14,7 @@ namespace AutoBase.DataProvider.FileSystem
             _dataProvider = provider;
         }
 
-        public string UploadFileToDestination( string filePath, Dump dump)
+        public string UploadFileToDestination(string filePath, Dump dump)
         {
             // make/year/model/module/memory/
             CheckDump(dump);
@@ -87,6 +87,23 @@ namespace AutoBase.DataProvider.FileSystem
         {
             _dataProvider.Dispose();
             GC.SuppressFinalize(this);
+        }
+
+        public async void DeleteFile(string destination, Dump dump)
+        {
+            if (File.Exists(destination))
+            {
+                try
+                {
+                    File.Delete(destination);
+                }
+                catch (Exception e)
+                {
+                    throw;
+                }
+
+                await _dataProvider.RemoveDump(dump);
+            }
         }
     }
 }

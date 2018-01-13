@@ -122,6 +122,10 @@
     <Compile Include="Dialogs\AddModelDlg\AddModelWindow.xaml.cs">
       <DependentUpon>AddModelWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Dialogs\AddModuleDlg\AddModuleViewModel.cs" />
+    <Compile Include="Dialogs\AddModuleDlg\AddModuleWindow.xaml.cs">
+      <DependentUpon>AddModuleWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Globals.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
@@ -148,6 +152,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Dialogs\AddModelDlg\AddModelWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Dialogs\AddModuleDlg\AddModuleWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -4,12 +4,11 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:controls="clr-namespace:AutoBase.LocalClient.Controls"
-                     xmlns:dxb="clr-namespace:DevExpress.Xpf.Bars;assembly=DevExpress.Xpf.Core.v15.1"                     
-                     xmlns:dxdo="clr-namespace:DevExpress.Xpf.Docking;assembly=DevExpress.Xpf.Docking.v15.1"
-                     xmlns:grid="http://schemas.devexpress.com/winfx/2008/xaml/grid"
+             xmlns:dxb="clr-namespace:DevExpress.Xpf.Bars;assembly=DevExpress.Xpf.Core.v15.1"                     
+             xmlns:dxdo="clr-namespace:DevExpress.Xpf.Docking;assembly=DevExpress.Xpf.Docking.v15.1"
+             xmlns:grid="http://schemas.devexpress.com/winfx/2008/xaml/grid"
              xmlns:resx="clr-namespace:AutoBase.UI.Res.Properties;assembly=AutoBase.UI.Res"
              xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
-                     xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <dxb:BarManager x:Name="barManager1">
@@ -37,9 +36,43 @@
                                 <controls:AdvGridControl x:Name="advGrid" Grid.Column="0"
 									ItemsSource="{Binding Dumps, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" >
                                     <controls:AdvGridControl.Columns>
-                                        <grid:GridColumn AllowEditing="False" FieldName="Id" />
+                                        <grid:GridColumn AllowEditing="False" Header="{x:Static resx:Strings.MakeName}" FieldName="Make.Name">
+                                            <grid:GridColumn.EditSettings>
+                                                <dxe:TextEditSettings/>
+                                            </grid:GridColumn.EditSettings>
+                                        </grid:GridColumn>
 
-                                        <grid:GridColumn AllowEditing="True" FieldName="Name">
+                                        <grid:GridColumn AllowEditing="False" Header="{x:Static resx:Strings.ModelName}" FieldName="Model.ModelName">
+                                            <grid:GridColumn.EditSettings>
+                                                <dxe:TextEditSettings/>
+                                            </grid:GridColumn.EditSettings>
+                                        </grid:GridColumn>
+
+                                        <grid:GridColumn AllowEditing="False" FieldName="Year">
+                                            <grid:GridColumn.EditSettings>
+                                                <dxe:TextEditSettings/>
+                                            </grid:GridColumn.EditSettings>
+                                        </grid:GridColumn>
+
+                                        <grid:GridColumn AllowEditing="False" Header="{x:Static resx:Strings.ModuleName}" FieldName="Module.Name">
+                                            <grid:GridColumn.EditSettings>
+                                                <dxe:TextEditSettings/>
+                                            </grid:GridColumn.EditSettings>
+                                        </grid:GridColumn>
+
+                                        <grid:GridColumn AllowEditing="False" FieldName="Memory">
+                                            <grid:GridColumn.EditSettings>
+                                                <dxe:TextEditSettings/>
+                                            </grid:GridColumn.EditSettings>
+                                        </grid:GridColumn>
+
+                                        <grid:GridColumn AllowEditing="False" FieldName="BlockNumber">
+                                            <grid:GridColumn.EditSettings>
+                                                <dxe:TextEditSettings/>
+                                            </grid:GridColumn.EditSettings>
+                                        </grid:GridColumn>
+
+                                        <grid:GridColumn AllowEditing="False" FieldName="Path">
                                             <grid:GridColumn.EditSettings>
                                                 <dxe:TextEditSettings/>
                                             </grid:GridColumn.EditSettings>
@@ -129,7 +162,7 @@
                                                     <ControlTemplate>
                                                         <grid:GridControl x:Name="PART_GridControl">
                                                             <grid:GridControl.Columns>
-                                                                <grid:GridColumn FieldName="Name"
+                                                                <grid:GridColumn FieldName="ModelName"
 																 />
                                                             </grid:GridControl.Columns>
                                                             <grid:GridControl.View>

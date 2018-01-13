@@ -65,6 +65,16 @@ namespace AutoBase.DataProvider
             var data = Dal.Modules.ToListAsync().Result;
             return new ObservableCollection<Module>(data);
         }
+
+        public async Task RemoveDump(Dump dump)
+        {
+            var record = Dal.Find<Dump>(dump.Id);
+            if (record != null)
+            {
+                await Dal.Remove(record);
+            }
+        }
+
         public async Task SaveMakeAsync(Make make)
         {
             await Dal.Save(make);
@@ -73,6 +83,11 @@ namespace AutoBase.DataProvider
         public async Task SaveModelAsync(Model model)
         {
             await Dal.Save(model);
+        }
+
+        public async Task SaveModuleAsync(Module module)
+        {
+            await Dal.Save(module);
         }
     }
 }

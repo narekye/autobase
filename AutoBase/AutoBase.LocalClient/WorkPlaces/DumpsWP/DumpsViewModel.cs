@@ -4,7 +4,6 @@ using AutoBase.LocalClient.ViewModel;
 using GalaSoft.MvvmLight.CommandWpf;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
-using System;
 
 namespace AutoBase.LocalClient.WorkPlaces.DumpsWP
 {
@@ -124,6 +123,7 @@ namespace AutoBase.LocalClient.WorkPlaces.DumpsWP
         {
             Dumps = await Globals.DataProvider.GetDumpsByFilter(Filter);
         }
+
         #endregion
 
         #region Private methods 

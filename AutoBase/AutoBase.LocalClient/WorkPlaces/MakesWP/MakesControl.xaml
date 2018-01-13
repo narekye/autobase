@@ -18,7 +18,8 @@
         <dxb:BarManager.Items>
             <dxb:BarButtonItem x:Name="addMake" Hint="{x:Static resx:Strings.AddMake}" Command="{Binding AddMakeCommand}" Glyph="pack://application:,,,/DevExpress.Images.v15.1;component/Images/Actions/AddItem_16x16.png" />
             <dxb:BarButtonItem x:Name="saveMake" Hint="{x:Static resx:Strings.Save}" Command="{Binding SaveMakeCommand}" Glyph="{dx:DXImage Image=Save_16x16.png}" />
-            <dxb:BarButtonItem Command="{Binding AddModelCommand}" Alignment="Far" x:Name="addModel" Content="Add Model" />
+            <dxb:BarButtonItem Command="{Binding AddModelCommand}" Alignment="Far" x:Name="addModel" Content="{x:Static resx:Strings.AddModel}" />
+            <dxb:BarButtonItem Command="{Binding AddModuleCommand}" Alignment="Far" x:Name="addModule" Content="{x:Static resx:Strings.AddModule}" />
             <dxb:BarButtonItem Command="{Binding AttachDumpCommand}" x:Name="addDump" Alignment="Far" Content="Attach Dump" ></dxb:BarButtonItem>
         </dxb:BarManager.Items>
         <dxb:BarManager.Bars>
@@ -30,11 +31,9 @@
                     <dxb:BarItemLink BarItemName="saveMake" />
                     <dxb:BarItemLinkSeparator/>
                     <dxb:BarButtonItemLink BarItemName="addMake" />
+                    <dxb:BarButtonItemLink BarItemName="addModule" />
                     <dxb:BarButtonItemLink BarItemName="addModel" />
-                    
                     <dxb:BarButtonItemLink BarItemName="addDump" />
-                    
-                    
                 </dxb:Bar.ItemLinks>
             </dxb:Bar>
         </dxb:BarManager.Bars>
@@ -49,8 +48,6 @@
 									ItemsSource="{Binding Makes, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                                          SelectedItem="{Binding SelectedMake}">
                                     <controls:AdvGridControl.Columns>
-                                        <grid:GridColumn AllowEditing="False" FieldName="Id" />
-
                                         <grid:GridColumn AllowEditing="True" FieldName="Name">
                                             <grid:GridColumn.EditSettings>
                                                 <dxe:TextEditSettings/>
@@ -241,7 +238,7 @@
                     </dxdo:LayoutPanel>-->
                 </dxdo:LayoutGroup>
             </dxdo:DockLayoutManager>
-           
+
         </DockPanel>
     </dxb:BarManager>
 </controls:AdvControl>

@@ -57,10 +57,13 @@ namespace AutoBase.DAL.AutoBaseEntities
         {
             return await base.SaveChangesAsync();
         }
-
-        public IAutoBaseEntities GetInstance()
+        
+        public async Task Remove<TEntity>(TEntity record) where TEntity : class
         {
-            return _instance;
+            if (record != null)
+                Set<TEntity>().Remove(record);
+
+            await SaveChangesAsync();
         }
     }
 }
