@@ -112,10 +112,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="AutoBaseDb.mdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="AutoBaseDb_log.ldf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <DependentUpon>AutoBaseDb.mdf</DependentUpon>
     </Content>
     <Content Include="AutoBaseEntities\AutoBaseModel.Context.tt">

@@ -16,5 +16,7 @@ namespace AutoBase.DAL
         void SetValues(object from, object to);
         Task Save<TEntity>(TEntity value) where TEntity : class;
         Task<int> SaveChangesAsync();
+
+        IAutoBaseEntities GetInstance();
     }
 }

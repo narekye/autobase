@@ -7,15 +7,38 @@
 	xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
     xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid"
 	xmlns:dxlc="clr-namespace:DevExpress.Xpf.LayoutControl;assembly=DevExpress.Xpf.LayoutControl.v15.1"
-	Title="Add dump" Height="200" Width="366" WindowStartupLocation="CenterScreen" HorizontalContentAlignment="Center"
+	Title="{Binding Title}" Height="270" Width="366" WindowStartupLocation="CenterScreen" HorizontalContentAlignment="Center"
 	WindowStyle="ToolWindow" ResizeMode="NoResize">
     <dxlc:LayoutControl Orientation="Vertical" Style="{StaticResource rootElement}">
         <dxlc:LayoutGroup ItemSpace="10" >
-            <dxlc:LayoutItem >
+
+            <dxlc:LayoutItem Label="{x:Static resx:Strings.SelectModel}">
                 <dxg:LookUpEdit
-                                ItemsSource="{Binding ImageTypes,Mode=TwoWay}"
-                                EditValue="{Binding SelectedImageType, UpdateSourceTrigger=PropertyChanged,  Mode=TwoWay}"
+                                ItemsSource="{Binding Models,Mode=TwoWay}"
+                                EditValue="{Binding SelectedModel, UpdateSourceTrigger=PropertyChanged,  Mode=TwoWay}"
                                 IsCaseSensitiveSearch="False"
+                                DisplayMember="ModelName" AutoPopulateColumns="False">
+                    <dxg:LookUpEdit.PopupContentTemplate>
+                        <ControlTemplate>
+                            <dxg:GridControl Name="PART_GridControl">
+                                <dxg:GridControl.Columns>
+                                    <dxg:GridColumn FieldName="ModelName" />
+                                </dxg:GridControl.Columns>
+                                <dxg:GridControl.View>
+                                    <dxg:TableView AutoWidth="True" />
+                                </dxg:GridControl.View>
+                            </dxg:GridControl>
+                        </ControlTemplate>
+                    </dxg:LookUpEdit.PopupContentTemplate>
+                </dxg:LookUpEdit>
+            </dxlc:LayoutItem>
+        </dxlc:LayoutGroup>
+
+        <dxlc:LayoutGroup ItemSpace="10" >
+            <dxlc:LayoutItem Label="{x:Static resx:Strings.SelectECU}">
+                <dxg:LookUpEdit
+                                ItemsSource="{Binding Modules, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                                EditValue="{Binding SelectedModule, UpdateSourceTrigger=PropertyChanged,  Mode=TwoWay}"
                                 DisplayMember="Name" AutoPopulateColumns="False">
                     <dxg:LookUpEdit.PopupContentTemplate>
                         <ControlTemplate>
@@ -32,20 +55,35 @@
                 </dxg:LookUpEdit>
             </dxlc:LayoutItem>
         </dxlc:LayoutGroup>
+
+        <dxlc:LayoutGroup>
+            <dxlc:LayoutItem Label="{x:Static resx:Strings.Year}">
+                <dxe:TextEdit EditValue="{Binding Year, Mode=TwoWay}" />
+            </dxlc:LayoutItem>
+        </dxlc:LayoutGroup>
+
+        <dxlc:LayoutGroup>
+            <dxlc:LayoutItem Label="{x:Static resx:Strings.Memory}">
+                <dxe:TextEdit EditValue="{Binding Memory,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+            </dxlc:LayoutItem>
+        </dxlc:LayoutGroup>
+
+        <dxlc:LayoutGroup>
+            <dxlc:LayoutItem Label="{x:Static resx:Strings.BlockNumber}">
+                <dxe:TextEdit EditValue="{Binding BlockNumber, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+            </dxlc:LayoutItem>
+        </dxlc:LayoutGroup>
+
         <dxlc:LayoutGroup Orientation="Horizontal" >
-            <dxlc:LayoutGroup Orientation="Horizontal">
-                <dxlc:LayoutItem Width="230">
-                    <dxe:TextEdit  EditValue="{Binding ImagePath, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  Margin="0,5,0,0"/>
-                </dxlc:LayoutItem>
-                <dxlc:LayoutItem >
-                    <Button Content="{x:Static resx:Strings.Browse}" Command="{Binding SelectImageCommand}" Style="{StaticResource dialogButton}" HorizontalAlignment="Right" ></Button>
-                </dxlc:LayoutItem>
-            </dxlc:LayoutGroup>
+            <dxlc:LayoutItem Label="{x:Static resx:Strings.File}">
+                <dxe:TextEdit EditValue="{Binding SelectedPath, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  Margin="0,5,0,0"/>
+            </dxlc:LayoutItem>
         </dxlc:LayoutGroup>
 
         <dxlc:LayoutGroup MaxHeight="40" VerticalAlignment="Bottom">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                <Button Content="Upload" Command="{Binding UploadClickCommand, Mode=OneWay}" Style="{StaticResource dialogButton}"/>
+                <Button Content="{x:Static resx:Strings.Browse}" Command="{Binding BrowseForFileCommand}" Style="{StaticResource dialogButton}" HorizontalAlignment="Right" ></Button>
+                <Button Content="{x:Static resx:Strings.Save}" Command="{Binding OkBtnCommand}" Style="{StaticResource dialogButton}"/>
                 <Button Content="{x:Static resx:Strings.Cancel}" IsCancel="True" Style="{StaticResource dialogButton}" />
             </StackPanel>
         </dxlc:LayoutGroup>

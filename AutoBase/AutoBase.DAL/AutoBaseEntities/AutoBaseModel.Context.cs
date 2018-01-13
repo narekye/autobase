@@ -18,6 +18,7 @@ namespace AutoBase.DAL.AutoBaseEntities
         public AutoBaseEntities()
             : base("name=AutoBaseEntities")
         {
+            _instance = this;
         }
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

@@ -61,6 +61,15 @@ namespace AutoBase.UI.Res.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add dump.
+        /// </summary>
+        public static string AddDump {
+            get {
+                return ResourceManager.GetString("AddDump", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Add make.
         /// </summary>
         public static string AddMake {
@@ -75,6 +84,15 @@ namespace AutoBase.UI.Res.Properties {
         public static string AddNewMake {
             get {
                 return ResourceManager.GetString("AddNewMake", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Block number.
+        /// </summary>
+        public static string BlockNumber {
+            get {
+                return ResourceManager.GetString("BlockNumber", resourceCulture);
             }
         }
         
@@ -124,11 +142,29 @@ namespace AutoBase.UI.Res.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to File.
+        /// </summary>
+        public static string File {
+            get {
+                return ResourceManager.GetString("File", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Makes.
         /// </summary>
         public static string Makes {
             get {
                 return ResourceManager.GetString("Makes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Memory.
+        /// </summary>
+        public static string Memory {
+            get {
+                return ResourceManager.GetString("Memory", resourceCulture);
             }
         }
         
@@ -187,11 +223,38 @@ namespace AutoBase.UI.Res.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Select ECU.
+        /// </summary>
+        public static string SelectECU {
+            get {
+                return ResourceManager.GetString("SelectECU", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select model.
+        /// </summary>
+        public static string SelectModel {
+            get {
+                return ResourceManager.GetString("SelectModel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Themes.
         /// </summary>
         public static string Themes {
             get {
                 return ResourceManager.GetString("Themes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Year.
+        /// </summary>
+        public static string Year {
+            get {
+                return ResourceManager.GetString("Year", resourceCulture);
             }
         }
     }

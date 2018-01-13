@@ -1,23 +1,34 @@
 ﻿using AutoBase.LocalClient.ViewModel;
-using GalaSoft.MvvmLight.Command;
+using GalaSoft.MvvmLight.CommandWpf;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
 using AutoBase.DAL.AutoBaseEntities;
 using System.Threading.Tasks;
 using System.Linq;
+using System;
 
 namespace AutoBase.LocalClient.WorkPlaces.MakesWP
 {
     public class MakesViewModel : WorkPlaceViewModelBase
     {
         private ObservableCollection<Make> _makes;
-
+        private Make _selectedMake;
         public MakesViewModel(MainViewModel place, string displayName) : base(place, displayName)
         {
-            
+
         }
 
         #region Properties 
+        public Make SelectedMake
+        {
+            get { return _selectedMake; }
+            set
+            {
+                if (_selectedMake == value) return;
+                _selectedMake = value;
+                RaisePropertyChanged();
+            }
+        }
 
         public ObservableCollection<Make> Makes
         {
@@ -48,7 +59,33 @@ namespace AutoBase.LocalClient.WorkPlaces.MakesWP
             get { return _saveMakeCommand ?? (_saveMakeCommand = new RelayCommand(SaveMakeExecute)); }
         }
 
-        
+        private ICommand _addModelCommand;
+
+        public ICommand AddModelCommand
+        {
+            get { return _addModelCommand ?? (_addModelCommand = new RelayCommand(AddModelExecute, CanExecuteAddModel)); }
+
+        }
+
+        private ICommand _attachDumpCommad;
+
+        public ICommand AttachDumpCommand
+        {
+            get { return _attachDumpCommad ?? (_attachDumpCommad = new RelayCommand(AttachDumpExecuteAsync, CanExecuteAttachDump)); }
+        }
+
+
+        private void AttachDumpExecuteAsync()
+        {
+            var dataContext = new Dialogs.AddDumpDlg.AddDumpViewModel(SelectedMake);
+            ShowFromWorkplaceDialog(new Dialogs.AddDumpDlg.AddDumpWindow { DataContext = dataContext });
+        }
+
+        private bool CanExecuteAttachDump()
+        {
+            return SelectedMake != null;
+        }
+
 
         #endregion
 
@@ -64,6 +101,15 @@ namespace AutoBase.LocalClient.WorkPlaces.MakesWP
             await Globals.DataProvider.SaveMakeAsync(Makes.Last());
         }
 
+        private void AddModelExecute()
+        {
+
+        }
+
+        private bool CanExecuteAddModel()
+        {
+            return SelectedMake != null;
+        }
         #endregion
 
         #region Private methods 

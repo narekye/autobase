@@ -1,11 +1,203 @@
-﻿<UserControl x:Class="AutoBase.LocalClient.WorkPlaces.ModelsWP.ModelsControl"
+﻿<controls:AdvControl
+             x:Class="AutoBase.LocalClient.WorkPlaces.ModelsWP.ModelsControl"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"              
-             mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
-    <Grid>
-            
-    </Grid>
-</UserControl>
+			 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+			 xmlns:dxb="clr-namespace:DevExpress.Xpf.Bars;assembly=DevExpress.Xpf.Core.v15.1"                     
+			 xmlns:controls="clr-namespace:AutoBase.LocalClient.Controls"
+			 xmlns:dxdo="clr-namespace:DevExpress.Xpf.Docking;assembly=DevExpress.Xpf.Docking.v15.1"
+             xmlns:grid="http://schemas.devexpress.com/winfx/2008/xaml/grid"
+             xmlns:resx="clr-namespace:AutoBase.UI.Res.Properties;assembly=AutoBase.UI.Res"
+             xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
+                     xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core">
+    
+    <dxb:BarManager x:Name="barManager1">
+        <dxb:BarManager.Items>
+            <dxb:BarButtonItem x:Name="addMake" Hint="{x:Static resx:Strings.AddMake}" Command="{Binding AddMakeCommand}" Glyph="pack://application:,,,/DevExpress.Images.v15.1;component/Images/Actions/AddItem_16x16.png" />
+            <dxb:BarButtonItem x:Name="saveMake" Hint="{x:Static resx:Strings.Save}" Command="{Binding SaveMakeCommand}" Glyph="{dx:DXImage Image=Save_16x16.png}" />
+        </dxb:BarManager.Items>
+        <dxb:BarManager.Bars>
+            <dxb:Bar Caption="Main" UseWholeRow="True" IsMainMenu="True" >
+                <dxb:Bar.DockInfo>
+                    <dxb:BarDockInfo ContainerType="Top" />
+                </dxb:Bar.DockInfo>
+                <dxb:Bar.ItemLinks>
+                    <dxb:BarItemLink BarItemName="saveModel" />
+                    <dxb:BarItemLinkSeparator/>
+                    
+                    <dxb:BarButtonItemLink/>
+                </dxb:Bar.ItemLinks>
+            </dxb:Bar>
+        </dxb:BarManager.Bars>
+
+        <DockPanel LastChildFill="True" >
+            <dxdo:DockLayoutManager >
+                <dxdo:LayoutGroup Orientation="Horizontal">
+                    <dxdo:LayoutGroup Orientation="Vertical">
+                        <dxdo:LayoutPanel ItemWidth="*" AllowSizing="True" Caption="{x:Static resx:Strings.Makes}" Style="{StaticResource layoutMainControl}">
+                            <Grid x:Name="makesGrid" >
+                                <controls:AdvGridControl x:Name="advGrid" Grid.Column="0"
+									ItemsSource="{Binding Makes, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" >
+                                    <controls:AdvGridControl.Columns>
+                                        <grid:GridColumn AllowEditing="False" FieldName="Id" />
+
+                                        <grid:GridColumn AllowEditing="True" FieldName="Name">
+                                            <grid:GridColumn.EditSettings>
+                                                <dxe:TextEditSettings/>
+                                            </grid:GridColumn.EditSettings>
+                                        </grid:GridColumn>
+                                        <grid:GridColumn FieldName="DumpsCount" Header="{x:Static resx:Strings.DumpsCount}" />
+                                    </controls:AdvGridControl.Columns>
+                                    <controls:AdvGridControl.View>
+                                        <grid:TableView 
+                                            AllowEditing="True"
+                                            ShowTotalSummary="True"
+                                            ShowGroupPanel="False" 
+                                            AllowColumnFiltering="False"
+                            				AutoWidth="False"
+                                            ClipboardCopyWithHeaders="False"
+                                            EditorShowMode ="MouseDown" 
+                                            
+											EnableImmediatePosting="True" AllowPerPixelScrolling="False"/>
+                                    </controls:AdvGridControl.View>
+                                    <controls:AdvGridControl.TotalSummary>
+                                        <grid:GridSummaryItem FieldName="Id" ShowInColumn="Id" DisplayFormat="n0" SummaryType="Count" />
+                                        <!--<grid:GridSummaryItem FieldName="ModelsCount" ShowInColumn="ModelsCount" DisplayFormat="n0" SummaryType="Count" />-->
+                                    </controls:AdvGridControl.TotalSummary>
+                                </controls:AdvGridControl>
+                            </Grid>
+                        </dxdo:LayoutPanel>
+                    </dxdo:LayoutGroup>
+                    <!--<dxdo:LayoutPanel ItemWidth="200"  AllowClose="False">
+                        <ScrollViewer VerticalScrollBarVisibility="Auto" >
+                            <Grid >
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+
+                                -->
+                    <!--<StackPanel Orientation="Vertical" Margin="5">
+                                    <dxdo:LayoutGroup Grid.Row="0" Orientation="Vertical" Grid.ColumnSpan="2" >
+
+                                        <dxdo:LayoutControlItem  CaptionLocation="Top">
+
+                                            <grid:LookUpEdit ItemsSource="{Binding DataContext.Partners, Mode=TwoWay, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}}"
+											EditValue="{Binding DataContext.Filter.PartnerId, Mode=TwoWay, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, UpdateSourceTrigger=PropertyChanged}"
+											SelectedItem="{Binding DataContext.SelectedPartner, Mode=TwoWay, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, UpdateSourceTrigger=PropertyChanged}"
+											IsCaseSensitiveSearch="False"
+											AllowNullInput="True" NullText="None"
+											ValueMember="Id" DisplayMember="Name"
+											AutoPopulateColumns="False" >
+
+                                                <grid:LookUpEdit.StyleSettings>
+                                                    <grid:SearchLookUpEditStyleSettings />
+                                                </grid:LookUpEdit.StyleSettings>
+
+                                                -->
+                    <!--<grid:LookUpEdit.PopupContentTemplate>
+                                                    <ControlTemplate>
+                                                        <grid:GridControl x:Name="PART_GridControl">
+                                                            <grid:GridControl.Columns>
+                                                                <grid:GridColumn FieldName="Id" Header="ID" />
+                                                                <grid:GridColumn FieldName="Name"
+																 />
+                                                            </grid:GridControl.Columns>
+                                                            <grid:GridControl.View>
+                                                                <grid:TableView AutoWidth="True" />
+                                                            </grid:GridControl.View>
+                                                        </grid:GridControl>
+                                                    </ControlTemplate>
+                                                </grid:LookUpEdit.PopupContentTemplate>-->
+                    <!--
+
+                                                <dxe:ButtonInfo ButtonKind="Simple" GlyphKind="Cancel"
+												Command="{Binding DataContext.DeletePartnerCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}}"
+												 />
+                                            </grid:LookUpEdit>
+                                        </dxdo:LayoutControlItem>
+
+                                        <dxdo:LayoutControlItem  CaptionLocation="Top">
+
+                                            <grid:LookUpEdit ItemsSource="{Binding DataContext.ObjectTypes, Mode=TwoWay, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}}"
+											EditValue="{Binding DataContext.Filter.ObjectType, Mode=TwoWay, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, UpdateSourceTrigger=PropertyChanged}"
+											SelectedItem="{Binding DataContext.SelectedObjectType, Mode=TwoWay, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, UpdateSourceTrigger=PropertyChanged}"
+											IsCaseSensitiveSearch="False"
+											AllowNullInput="True" NullText="None"
+											ValueMember="NumId" DisplayMember="Name"
+											AutoPopulateColumns="False" >
+
+                                                <grid:LookUpEdit.StyleSettings>
+                                                    <grid:SearchLookUpEditStyleSettings />
+                                                </grid:LookUpEdit.StyleSettings>
+
+                                                -->
+                    <!--<grid:LookUpEdit.PopupContentTemplate>
+                                                    <ControlTemplate>
+                                                        <grid:GridControl x:Name="PART_GridControl">
+                                                            <grid:GridControl.Columns>
+                                                                <grid:GridColumn FieldName="Name"
+																 />
+                                                            </grid:GridControl.Columns>
+                                                            <grid:GridControl.View>
+                                                                <grid:TableView AutoWidth="True" />
+                                                            </grid:GridControl.View>
+                                                        </grid:GridControl>
+                                                    </ControlTemplate>
+                                                </grid:LookUpEdit.PopupContentTemplate>-->
+                    <!--
+
+                                                <dxe:ButtonInfo ButtonKind="Simple" GlyphKind="Cancel"
+												Command="{Binding DataContext.DeleteObjectTypeCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}}"
+												 />
+                                            </grid:LookUpEdit>
+                                        </dxdo:LayoutControlItem>
+
+                                        <dxdo:LayoutControlItem  CaptionLocation="Top">
+                                            <dxe:DateEdit Margin="0" x:Name="creationDateFrom"
+													  AllowNullInput="True"
+													  NullText="None"
+													  EditValue="{Binding DataContext.Filter.StartDateLocal, Mode=TwoWay, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, UpdateSourceTrigger=PropertyChanged}" />
+                                        </dxdo:LayoutControlItem>
+
+                                        <dxdo:LayoutControlItem  CaptionLocation="Top">
+                                            <dxe:DateEdit Margin="0" x:Name="CreationDateTo" NullText="None" AllowNullInput="True"
+													  EditValue="{Binding DataContext.Filter.EndDateLocal, Mode=TwoWay, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, UpdateSourceTrigger=PropertyChanged}" />
+                                        </dxdo:LayoutControlItem>
+
+                                        <dxdo:LayoutControlItem Caption="Id" CaptionLocation="Top" >
+                                            <dxe:ButtonEdit EditValue="{Binding DataContext.Filter.Id, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}}"
+											AllowNullInput="True" NullText="0" ShowNullText="True"
+											NullValueButtonPlacement="EditBox" AllowDefaultButton="False" />
+                                        </dxdo:LayoutControlItem>
+
+                                        <dxdo:LayoutControlItem CaptionLocation="Left"  >
+                                            <dxe:CheckEdit HorizontalAlignment="Center" 
+														   IsThreeState="True"
+														   IsChecked="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=DataContext.Filter.IsDeleted}"/>
+                                        </dxdo:LayoutControlItem>
+
+                                        <dxdo:LayoutControlItem  CaptionLocation="Left">
+                                            <dxe:CheckEdit HorizontalAlignment="Center" 
+														   IsThreeState="True"
+														   IsChecked="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=DataContext.Filter.IsChecked}" />
+                                        </dxdo:LayoutControlItem>
+
+
+                                    </dxdo:LayoutGroup>
+                                </StackPanel>-->
+
+                    <!--<StackPanel Grid.Row="1" Margin="10" HorizontalAlignment="Right" Orientation="Horizontal" Grid.ColumnSpan="2" >
+                                    <Button Content="OK" Command="{Binding OkButtonCommand}" Style="{StaticResource dialogButton}"/>
+                                    <Button Content="Cancel" Command="{Binding ClearButtonCommand}" Style="{ StaticResource dialogButton}"/>
+                                </StackPanel>-->
+                    <!--
+                            </Grid>
+                        </ScrollViewer>
+                    </dxdo:LayoutPanel>-->
+                </dxdo:LayoutGroup>
+            </dxdo:DockLayoutManager>
+
+        </DockPanel>
+    </dxb:BarManager>
+</controls:AdvControl>

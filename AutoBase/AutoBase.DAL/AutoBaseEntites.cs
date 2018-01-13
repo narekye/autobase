@@ -5,11 +5,16 @@ namespace AutoBase.DAL.AutoBaseEntities
 {
     public partial class AutoBaseEntities : IAutoBaseEntities
     {
+        private static IAutoBaseEntities _instance;
         public AutoBaseEntities(string dbName) : base(dbName)
         {
-            Configuration.AutoDetectChangesEnabled = false;
-            Configuration.LazyLoadingEnabled = false;
-            Configuration.ProxyCreationEnabled = false;
+            if (_instance == null)
+            {
+                Configuration.AutoDetectChangesEnabled = false;
+                Configuration.LazyLoadingEnabled = false;
+                Configuration.ProxyCreationEnabled = false;
+                _instance = this;
+            }
         }
 
         public async Task Save<TEntity>(TEntity value) where TEntity : class
@@ -51,6 +56,11 @@ namespace AutoBase.DAL.AutoBaseEntities
         public new async Task<int> SaveChangesAsync()
         {
             return await base.SaveChangesAsync();
+        }
+
+        public IAutoBaseEntities GetInstance()
+        {
+            return _instance;
         }
     }
 }

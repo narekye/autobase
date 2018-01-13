@@ -8,7 +8,9 @@ namespace AutoBase.LocalClient
     /// </summary>
     public partial class App : Application
     {
-
-
+        public App()
+        {
+            AppCache.Init();
+        }
     }
 }
