@@ -55,5 +55,10 @@ namespace AutoBase.DataProvider
         {
             await Dal.Save(make);
         }
+
+        public async Task SaveModelAsync(Model model)
+        {
+            await Dal.Save(model);
+        }
     }
 }

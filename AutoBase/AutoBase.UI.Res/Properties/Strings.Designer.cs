@@ -79,6 +79,15 @@ namespace AutoBase.UI.Res.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add new model.
+        /// </summary>
+        public static string AddModel {
+            get {
+                return ResourceManager.GetString("AddModel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Add new make.
         /// </summary>
         public static string AddNewMake {
@@ -165,6 +174,15 @@ namespace AutoBase.UI.Res.Properties {
         public static string Memory {
             get {
                 return ResourceManager.GetString("Memory", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Model name.
+        /// </summary>
+        public static string ModelName {
+            get {
+                return ResourceManager.GetString("ModelName", resourceCulture);
             }
         }
         

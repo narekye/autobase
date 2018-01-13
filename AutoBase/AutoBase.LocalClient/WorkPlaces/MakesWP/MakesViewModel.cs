@@ -5,7 +5,7 @@ using System.Windows.Input;
 using AutoBase.DAL.AutoBaseEntities;
 using System.Threading.Tasks;
 using System.Linq;
-using System;
+using AutoBase.LocalClient.Dialogs.AddModelDlg;
 
 namespace AutoBase.LocalClient.WorkPlaces.MakesWP
 {
@@ -103,7 +103,8 @@ namespace AutoBase.LocalClient.WorkPlaces.MakesWP
 
         private void AddModelExecute()
         {
-
+            var dataContext = new AddModelViewModel(SelectedMake);
+            ShowFromWorkplaceDialog(new AddModelWindow() { DataContext = dataContext });
         }
 
         private bool CanExecuteAddModel()

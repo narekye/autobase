@@ -164,7 +164,7 @@ namespace AutoBase.LocalClient.Dialogs.AddDumpDlg
         {
             int year = 0;
             bool isYearParsed = int.TryParse(Year, out year);
-            
+
             var dump = new Dump
             {
                 MakeId = Make.Id,
@@ -182,7 +182,7 @@ namespace AutoBase.LocalClient.Dialogs.AddDumpDlg
             dump.Module = null;
             try { await Globals.DataProvider.Dal.Save<Dump>(dump); }
             catch (Exception e) { }
-
+            CloseCurrentWindow(true, typeof(AddDumpWindow));
         }
 
         private void BrowseForFileExecute()

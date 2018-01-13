@@ -13,6 +13,7 @@ namespace AutoBase.DataProvider
         Task<ObservableCollection<Make>> GetMakes();
         Task<ObservableCollection<Model>> GetModels();
         ObservableCollection<Module> GetModules();
+        Task SaveModelAsync(Model model);
         Task SaveMakeAsync(Make makee);
     }
 }
