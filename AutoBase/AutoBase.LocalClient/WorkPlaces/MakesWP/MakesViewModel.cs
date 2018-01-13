@@ -63,7 +63,7 @@ namespace AutoBase.LocalClient.WorkPlaces.MakesWP
 
         public ICommand AddModelCommand
         {
-            get { return _addModelCommand ?? (_addModelCommand = new RelayCommand(AddModelExecute, CanExecuteAddModel)); }
+            get { return _addModelCommand ?? (_addModelCommand = new RelayCommand(AddModelExecuteAsync, CanExecuteAddModel)); }
 
         }
 
@@ -79,6 +79,7 @@ namespace AutoBase.LocalClient.WorkPlaces.MakesWP
         {
             var dataContext = new Dialogs.AddDumpDlg.AddDumpViewModel(SelectedMake);
             ShowFromWorkplaceDialog(new Dialogs.AddDumpDlg.AddDumpWindow { DataContext = dataContext });
+            LoadControl();
         }
 
         private bool CanExecuteAttachDump()
@@ -99,12 +100,15 @@ namespace AutoBase.LocalClient.WorkPlaces.MakesWP
         private async void SaveMakeExecute()
         {
             await Globals.DataProvider.SaveMakeAsync(Makes.Last());
+            LoadControl();
         }
 
-        private void AddModelExecute()
+        private async void AddModelExecuteAsync()
         {
             var dataContext = new AddModelViewModel(SelectedMake);
             ShowFromWorkplaceDialog(new AddModelWindow() { DataContext = dataContext });
+            await Task.WhenAll();
+            LoadControl();
         }
 
         private bool CanExecuteAddModel()

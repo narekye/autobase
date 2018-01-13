@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using AutoBase.DAL;
 using AutoBase.DAL.AutoBaseEntities;
+using AutoBase.DAL.Filters;
 
 namespace AutoBase.DataProvider
 {
@@ -29,6 +30,13 @@ namespace AutoBase.DataProvider
             return new ObservableCollection<Dump>(await Dal.Dumps.ToListAsync());
         }
 
+        public async Task<ObservableCollection<Dump>> GetDumpsByFilter(FilterDump filter)
+        {
+            IQueryable<Dump> query = Dal.Dumps;
+            var filteredData = filter.FilterObjects(query);
+            return new ObservableCollection<Dump>(await filteredData.ToListAsync());
+        }
+
         public async Task<ObservableCollection<Make>> GetMakes()
         {
             var data = await Dal.Makes.Include(x => x.Models).OrderBy(x => x.Id).ToListAsync();
@@ -44,6 +52,12 @@ namespace AutoBase.DataProvider
         {
             var data = await Dal.Models.Include(x => x.Make).ToListAsync();
             return new ObservableCollection<Model>(data);
+        }
+
+        public async Task<ObservableCollection<Model>> GetModelsForMake(int makeId)
+        {
+            var data = Dal.Models.Where(x => x.MakeId == makeId).ToListAsync();
+            return new ObservableCollection<Model>(await data);
         }
 
         public ObservableCollection<Module> GetModules()

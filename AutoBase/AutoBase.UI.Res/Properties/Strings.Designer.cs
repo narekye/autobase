@@ -160,6 +160,15 @@ namespace AutoBase.UI.Res.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Make ID.
+        /// </summary>
+        public static string MakeId {
+            get {
+                return ResourceManager.GetString("MakeId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Makes.
         /// </summary>
         public static string Makes {
@@ -174,6 +183,15 @@ namespace AutoBase.UI.Res.Properties {
         public static string Memory {
             get {
                 return ResourceManager.GetString("Memory", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Model ID.
+        /// </summary>
+        public static string ModelId {
+            get {
+                return ResourceManager.GetString("ModelId", resourceCulture);
             }
         }
         
@@ -201,6 +219,15 @@ namespace AutoBase.UI.Res.Properties {
         public static string ModelsCount {
             get {
                 return ResourceManager.GetString("ModelsCount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Module ID.
+        /// </summary>
+        public static string ModuleID {
+            get {
+                return ResourceManager.GetString("ModuleID", resourceCulture);
             }
         }
         

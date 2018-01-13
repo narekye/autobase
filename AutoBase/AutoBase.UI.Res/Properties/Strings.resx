@@ -152,12 +152,18 @@
   <data name="File" xml:space="preserve">
     <value>File</value>
   </data>
+  <data name="MakeId" xml:space="preserve">
+    <value>Make ID</value>
+  </data>
   <data name="Makes" xml:space="preserve">
     <value>Makes</value>
     <comment>Make</comment>
   </data>
   <data name="Memory" xml:space="preserve">
     <value>Memory</value>
+  </data>
+  <data name="ModelId" xml:space="preserve">
+    <value>Model ID</value>
   </data>
   <data name="ModelName" xml:space="preserve">
     <value>Model name</value>
@@ -168,6 +174,9 @@
   </data>
   <data name="ModelsCount" xml:space="preserve">
     <value>Models count</value>
+  </data>
+  <data name="ModuleID" xml:space="preserve">
+    <value>Module ID</value>
   </data>
   <data name="Modules" xml:space="preserve">
     <value>Modules</value>

@@ -135,10 +135,6 @@
       <DependentUpon>MakesControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="WorkPlaces\MakesWP\MakesViewModel.cs" />
-    <Compile Include="WorkPlaces\ModelsWP\ModelsControl.xaml.cs">
-      <DependentUpon>ModelsControl.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="WorkPlaces\ModelsWP\ModelsViewModel.cs" />
     <Compile Include="WorkPlaces\ModulesWP\ModulesControl.xaml.cs">
       <DependentUpon>ModulesControl.xaml</DependentUpon>
     </Compile>
@@ -176,10 +172,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="WorkPlaces\MakesWP\MakesControl.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="WorkPlaces\ModelsWP\ModelsControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

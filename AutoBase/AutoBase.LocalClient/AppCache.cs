@@ -10,11 +10,13 @@ namespace AutoBase.LocalClient
             // Modules = Globals.DataProvider.GetModules().GetAwaiter().GetResult();
         }
 
-        public static void Init()
+        public static async void Init()
         {
             Modules = Globals.DataProvider.GetModules();
+            Makes = await Globals.DataProvider.GetMakes();
         }
 
         public static ObservableCollection<Module> Modules { get; set; }
+        public static ObservableCollection<Make> Makes { get; set; }
     }
 }

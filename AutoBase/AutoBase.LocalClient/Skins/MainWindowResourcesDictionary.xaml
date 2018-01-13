@@ -2,16 +2,12 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:makesWp="clr-namespace:AutoBase.LocalClient.WorkPlaces.MakesWP"
                     xmlns:dumpsWp="clr-namespace:AutoBase.LocalClient.WorkPlaces.DumpsWP"
-                    xmlns:modelsWp="clr-namespace:AutoBase.LocalClient.WorkPlaces.ModelsWP"
                     xmlns:modulesWp="clr-namespace:AutoBase.LocalClient.WorkPlaces.ModulesWP">
     <DataTemplate DataType="{x:Type makesWp:MakesViewModel}">
         <makesWp:MakesControl />
     </DataTemplate>
     <DataTemplate DataType="{x:Type dumpsWp:DumpsViewModel}">
         <dumpsWp:DumpsControl />
-    </DataTemplate>
-    <DataTemplate DataType="{x:Type modelsWp:ModelsViewModel}">
-        <modelsWp:ModelsControl />
     </DataTemplate>
     <DataTemplate DataType="{x:Type modulesWp:ModulesViewModel}">
         <modulesWp:ModulesControl />

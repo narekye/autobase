@@ -7,7 +7,6 @@ using System.Linq;
 using System.Windows.Input;
 using AutoBase.UI.Res.Properties;
 using AutoBase.LocalClient.WorkPlaces.DumpsWP;
-using AutoBase.LocalClient.WorkPlaces.ModelsWP;
 using AutoBase.LocalClient.WorkPlaces.ModulesWP;
 
 namespace AutoBase.LocalClient.ViewModel
@@ -59,20 +58,6 @@ namespace AutoBase.LocalClient.ViewModel
             get { return _dumpsClick ?? (_dumpsClick = new RelayCommand(DumpsClickExecute)); }
         }
 
-        private ICommand _modelsClick;
-
-        public ICommand ModelsClick
-        {
-            get { return _modelsClick ?? (_modelsClick = new RelayCommand(ModelsClickExecute)); }
-        }
-
-        private ICommand _modulesClick;
-
-        public ICommand ModulesClick
-        {
-            get { return _modulesClick ?? (_modulesClick = new RelayCommand(ModulesClickExecute)); }
-        }
-
 
         #endregion
 
@@ -88,15 +73,6 @@ namespace AutoBase.LocalClient.ViewModel
             ActivateWP(new MakesViewModel(this, Strings.Makes));
         }
 
-        private void ModelsClickExecute()
-        {
-            ActivateWP(new ModelsViewModel(this, Strings.Models));
-        }
-
-        private void ModulesClickExecute()
-        {
-            ActivateWP(new ModulesViewModel(this, Strings.Modules));
-        }
         #endregion
 
         public ObservableCollection<WorkPlaceViewModelBase> WorkPlaceList
