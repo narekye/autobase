@@ -133,6 +133,9 @@
   <data name="AddNewMake" xml:space="preserve">
     <value>Add new make</value>
   </data>
+  <data name="AttachDump" xml:space="preserve">
+    <value>Attach dump</value>
+  </data>
   <data name="BlockNumber" xml:space="preserve">
     <value>Block number</value>
   </data>
@@ -145,6 +148,9 @@
   <data name="Database" xml:space="preserve">
     <value>Database</value>
     <comment>Db</comment>
+  </data>
+  <data name="DeleteDump" xml:space="preserve">
+    <value>Delete dump</value>
   </data>
   <data name="Dumps" xml:space="preserve">
     <value>Dumps</value>

@@ -106,6 +106,15 @@ namespace AutoBase.UI.Res.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Attach dump.
+        /// </summary>
+        public static string AttachDump {
+            get {
+                return ResourceManager.GetString("AttachDump", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Block number.
         /// </summary>
         public static string BlockNumber {
@@ -138,6 +147,15 @@ namespace AutoBase.UI.Res.Properties {
         public static string Database {
             get {
                 return ResourceManager.GetString("Database", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Delete dump.
+        /// </summary>
+        public static string DeleteDump {
+            get {
+                return ResourceManager.GetString("DeleteDump", resourceCulture);
             }
         }
         

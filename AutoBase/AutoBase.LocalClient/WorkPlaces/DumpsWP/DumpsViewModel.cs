@@ -11,6 +11,7 @@ namespace AutoBase.LocalClient.WorkPlaces.DumpsWP
     {
         private FilterDump _filter;
         private Make _selectedMake;
+        private Dump _selectedDump;
         private ObservableCollection<Dump> _dumps;
         private ObservableCollection<Make> _makes;
         private ObservableCollection<Model> _models;
@@ -38,10 +39,28 @@ namespace AutoBase.LocalClient.WorkPlaces.DumpsWP
             get { return _okBtnCommand ?? (_okBtnCommand = new RelayCommand(OkBtnExecute)); }
         }
 
+        private ICommand _deleteDumpCommand;
+
+        public ICommand DeleteDumpCommand
+        {
+            get { return _deleteDumpCommand ?? (_deleteDumpCommand = new RelayCommand(DeleteDumpExecute, CanDeleteDump)); }
+        }
+
 
         #endregion
 
         #region Properties 
+        public Dump SelectedDump
+        {
+            get { return _selectedDump; }
+            set
+            {
+                if (_selectedDump == value) return;
+                _selectedDump = value;
+                RaisePropertyChanged();
+            }
+        }
+
         public ObservableCollection<Dump> Dumps
         {
             get { return _dumps; }
@@ -124,6 +143,13 @@ namespace AutoBase.LocalClient.WorkPlaces.DumpsWP
             Dumps = await Globals.DataProvider.GetDumpsByFilter(Filter);
         }
 
+
+        private void DeleteDumpExecute()
+        {
+            Globals.FileSystem.DeleteFile(SelectedDump);
+            Dumps.Remove(SelectedDump);
+        }
+
         #endregion
 
         #region Private methods 
@@ -137,6 +163,11 @@ namespace AutoBase.LocalClient.WorkPlaces.DumpsWP
         private async void LoadModels()
         {
             Models = await Globals.DataProvider.GetModelsForMake(SelectedMake.Id);
+        }
+
+        private bool CanDeleteDump()
+        {
+            return SelectedDump != null;
         }
 
         #endregion

@@ -12,20 +12,19 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <dxb:BarManager x:Name="barManager1">
-
-        <!--<dxb:BarManager.Bars>
+        <dxb:BarManager.Items>
+            <dxb:BarButtonItem Command="{Binding DeleteDumpCommand}" x:Name="deleteDump" Content="{x:Static resx:Strings.DeleteDump}" />
+        </dxb:BarManager.Items>
+        <dxb:BarManager.Bars>
             <dxb:Bar Caption="Main" UseWholeRow="True" IsMainMenu="True" >
                 <dxb:Bar.DockInfo>
                     <dxb:BarDockInfo ContainerType="Top" />
                 </dxb:Bar.DockInfo>
                 <dxb:Bar.ItemLinks>
-                    <dxb:BarItemLink BarItemName="saveModel" />
-                    <dxb:BarItemLinkSeparator/>
-
-                    <dxb:BarButtonItemLink/>
+                    <dxb:BarButtonItemLink BarItemName="deleteDump" />
                 </dxb:Bar.ItemLinks>
             </dxb:Bar>
-        </dxb:BarManager.Bars>-->
+        </dxb:BarManager.Bars>
 
         <DockPanel LastChildFill="True" >
             <dxdo:DockLayoutManager >
@@ -34,7 +33,8 @@
                         <dxdo:LayoutPanel ItemWidth="*" AllowSizing="True" Caption="{x:Static resx:Strings.Dumps}" Style="{StaticResource layoutMainControl}">
                             <Grid x:Name="makesGrid" >
                                 <controls:AdvGridControl x:Name="advGrid" Grid.Column="0"
-									ItemsSource="{Binding Dumps, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" >
+									ItemsSource="{Binding Dumps, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                    SelectedItem="{Binding SelectedDump, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
                                     <controls:AdvGridControl.Columns>
                                         <grid:GridColumn AllowEditing="False" Header="{x:Static resx:Strings.MakeName}" FieldName="Make.Name">
                                             <grid:GridColumn.EditSettings>

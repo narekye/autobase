@@ -20,7 +20,7 @@
             <dxb:BarButtonItem x:Name="saveMake" Hint="{x:Static resx:Strings.Save}" Command="{Binding SaveMakeCommand}" Glyph="{dx:DXImage Image=Save_16x16.png}" />
             <dxb:BarButtonItem Command="{Binding AddModelCommand}" Alignment="Far" x:Name="addModel" Content="{x:Static resx:Strings.AddModel}" />
             <dxb:BarButtonItem Command="{Binding AddModuleCommand}" Alignment="Far" x:Name="addModule" Content="{x:Static resx:Strings.AddModule}" />
-            <dxb:BarButtonItem Command="{Binding AttachDumpCommand}" x:Name="addDump" Alignment="Far" Content="Attach Dump" ></dxb:BarButtonItem>
+            <dxb:BarButtonItem Command="{Binding AttachDumpCommand}" x:Name="addDump" Alignment="Far" Content="{x:Static resx:Strings.AttachDump}" ></dxb:BarButtonItem>
         </dxb:BarManager.Items>
         <dxb:BarManager.Bars>
             <dxb:Bar Caption="Main" UseWholeRow="True" IsMainMenu="True" >

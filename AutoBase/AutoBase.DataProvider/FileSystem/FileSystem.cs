@@ -89,13 +89,13 @@ namespace AutoBase.DataProvider.FileSystem
             GC.SuppressFinalize(this);
         }
 
-        public async void DeleteFile(string destination, Dump dump)
+        public async void DeleteFile(Dump dump)
         {
-            if (File.Exists(destination))
+            if (File.Exists(dump.Path))
             {
                 try
                 {
-                    File.Delete(destination);
+                    File.Delete(dump.Path);
                 }
                 catch (Exception e)
                 {
