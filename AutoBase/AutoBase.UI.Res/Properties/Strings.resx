@@ -161,6 +161,9 @@
   <data name="File" xml:space="preserve">
     <value>File</value>
   </data>
+  <data name="GetFiles" xml:space="preserve">
+    <value>Get file(s)</value>
+  </data>
   <data name="MakeId" xml:space="preserve">
     <value>Make ID</value>
   </data>

@@ -14,6 +14,7 @@
     <dxb:BarManager x:Name="barManager1">
         <dxb:BarManager.Items>
             <dxb:BarButtonItem Command="{Binding DeleteDumpCommand}" x:Name="deleteDump" Content="{x:Static resx:Strings.DeleteDump}" />
+            <dxb:BarButtonItem Command="{Binding GetFilesCommand}" x:Name="getFiles" Content="{x:Static resx:Strings.GetFiles}" />
         </dxb:BarManager.Items>
         <dxb:BarManager.Bars>
             <dxb:Bar Caption="Main" UseWholeRow="True" IsMainMenu="True" >
@@ -22,6 +23,7 @@
                 </dxb:Bar.DockInfo>
                 <dxb:Bar.ItemLinks>
                     <dxb:BarButtonItemLink BarItemName="deleteDump" />
+                    <dxb:BarButtonItemLink BarItemName="getFiles" />
                 </dxb:Bar.ItemLinks>
             </dxb:Bar>
         </dxb:BarManager.Bars>
@@ -140,7 +142,7 @@
                                                 </grid:LookUpEdit.PopupContentTemplate>
 
                                                 <dxe:ButtonInfo ButtonKind="Simple" GlyphKind="Cancel"
-												Command="{Binding DeleteMakeCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}}" />
+												Command="{Binding DeleteMakeCommand}" />
                                             </grid:LookUpEdit>
                                         </dxdo:LayoutControlItem>
 
@@ -148,6 +150,7 @@
 
                                             <grid:LookUpEdit ItemsSource="{Binding Models, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
 											EditValue="{Binding Filter.ModelId, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                            SelectedItem="{Binding SelectedModel, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
 										    IsCaseSensitiveSearch="False"
 											AllowNullInput="True" NullText="None"
 											ValueMember="Id" DisplayMember="ModelName"
@@ -171,11 +174,7 @@
                                                         </grid:GridControl>
                                                     </ControlTemplate>
                                                 </grid:LookUpEdit.PopupContentTemplate>
-
-
-                                                <dxe:ButtonInfo ButtonKind="Simple" GlyphKind="Cancel"
-												Command="{Binding DataContext.DeleteObjectTypeCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}}"
-												 />
+                                                <dxe:ButtonInfo ButtonKind="Simple" GlyphKind="Cancel" Command="{Binding DeleteModelCommand}" />
                                             </grid:LookUpEdit>
                                         </dxdo:LayoutControlItem>
 
@@ -183,6 +182,7 @@
 
                                             <grid:LookUpEdit ItemsSource="{Binding Modules, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
 											EditValue="{Binding Filter.ModuleId, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                            SelectedItem="{Binding SelectedModule, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
 										    IsCaseSensitiveSearch="False"
 											AllowNullInput="True" NullText="None"
 											ValueMember="Id" DisplayMember="Name"
@@ -209,24 +209,29 @@
 
 
                                                 <dxe:ButtonInfo ButtonKind="Simple" GlyphKind="Cancel"
-												Command="{Binding DataContext.DeleteObjectTypeCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}}"
+												Command="{Binding DeleteModuleCommand}"
 												 />
                                             </grid:LookUpEdit>
                                         </dxdo:LayoutControlItem>
-
-
                                         <dxdo:LayoutControlItem  CaptionLocation="Top" Caption="{x:Static resx:Strings.Year}">
                                             <dxe:TextEdit Margin="0" x:Name="year"
 													  AllowNullInput="True"
 													  NullText="None"
-													  EditValue="{Binding Filter.StartDateLocal, Mode=TwoWay, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, UpdateSourceTrigger=PropertyChanged}" />
+													  EditValue="{Binding Filter.Year, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
                                         </dxdo:LayoutControlItem>
 
+                                        <dxdo:LayoutControlItem  CaptionLocation="Top" Caption="{x:Static resx:Strings.BlockNumber}">
+                                            <dxe:TextEdit Margin="0" x:Name="blockNumber"
+													  AllowNullInput="True"
+													  NullText="None"
+													  EditValue="{Binding Filter.BlockNumber, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                                        </dxdo:LayoutControlItem>
 
-                                        <dxdo:LayoutControlItem Caption="Id" CaptionLocation="Top" >
-                                            <dxe:ButtonEdit EditValue="{Binding DataContext.Filter.Id, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}}"
-											AllowNullInput="True" NullText="0" ShowNullText="True"
-											NullValueButtonPlacement="EditBox" AllowDefaultButton="False" />
+                                        <dxdo:LayoutControlItem  CaptionLocation="Top" Caption="{x:Static resx:Strings.Memory}">
+                                            <dxe:TextEdit Margin="0" x:Name="memory"
+													  AllowNullInput="True"
+													  NullText="None"
+													  EditValue="{Binding Filter.Memory, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
                                         </dxdo:LayoutControlItem>
                                     </dxdo:LayoutGroup>
                                 </StackPanel>

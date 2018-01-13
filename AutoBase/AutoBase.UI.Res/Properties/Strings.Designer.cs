@@ -187,6 +187,15 @@ namespace AutoBase.UI.Res.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Get file(s).
+        /// </summary>
+        public static string GetFiles {
+            get {
+                return ResourceManager.GetString("GetFiles", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Make ID.
         /// </summary>
         public static string MakeId {

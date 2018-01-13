@@ -37,14 +37,7 @@ namespace AutoBase.DataProvider.FileSystem
 
             // file upload 
             var fileName = filePath.Split('\\').Last();
-            try
-            {
-                File.Copy(filePath, directory + $"/{fileName}");
-            }
-            catch
-            {
-
-            }
+            File.Copy(filePath, directory + $"/{fileName}");
             return $"{directory}/{fileName}";
         }
 
@@ -93,16 +86,17 @@ namespace AutoBase.DataProvider.FileSystem
         {
             if (File.Exists(dump.Path))
             {
-                try
-                {
-                    File.Delete(dump.Path);
-                }
-                catch (Exception e)
-                {
-                    throw;
-                }
-
+                File.Delete(dump.Path);
                 await _dataProvider.RemoveDump(dump);
+            }
+        }
+
+        public void GetFile(string dest, Dump dump)
+        {
+            if (File.Exists(dump.Path))
+            {
+                var fileName = dump.Path.Split('/').Last();
+                File.Copy(dump.Path, dest + $"\\{fileName}");
             }
         }
     }

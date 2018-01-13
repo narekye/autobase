@@ -12,7 +12,7 @@
         xmlns:viewModel="clr-namespace:AutoBase.LocalClient.ViewModel"
         xmlns:resx="clr-namespace:AutoBase.UI.Res.Properties;assembly=AutoBase.UI.Res"
         mc:Ignorable="d"
-        Title="Main window" Height="auto" Width="auto" WindowStartupLocation="CenterScreen">
+        Title="AutoBase for Ares" Height="auto" Width="auto" WindowStartupLocation="CenterScreen">
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
