@@ -131,7 +131,6 @@
                                                     <ControlTemplate>
                                                         <grid:GridControl x:Name="PART_GridControl">
                                                             <grid:GridControl.Columns>
-                                                                <grid:GridColumn FieldName="Id" Header="ID" />
                                                                 <grid:GridColumn FieldName="Name" />
                                                             </grid:GridControl.Columns>
                                                             <grid:GridControl.View>

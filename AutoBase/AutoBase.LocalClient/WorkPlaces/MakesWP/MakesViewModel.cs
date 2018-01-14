@@ -85,11 +85,11 @@ namespace AutoBase.LocalClient.WorkPlaces.MakesWP
         #endregion
 
         #region Execution
-        private void AttachDumpExecuteAsync()
+        private async void AttachDumpExecuteAsync()
         {
             var dataContext = new Dialogs.AddDumpDlg.AddDumpViewModel(SelectedMake);
             ShowFromWorkplaceDialog(new Dialogs.AddDumpDlg.AddDumpWindow { DataContext = dataContext });
-            LoadControl();
+            await LoadControl();
         }
 
         private bool CanExecuteAttachDump()
@@ -111,15 +111,13 @@ namespace AutoBase.LocalClient.WorkPlaces.MakesWP
         private async void SaveMakeExecute()
         {
             await Globals.DataProvider.SaveMakeAsync(Makes.Last());
-            LoadControl();
+            await LoadControl();
         }
 
-        private async void AddModelExecuteAsync()
+        private void AddModelExecuteAsync()
         {
             var dataContext = new AddModelViewModel(SelectedMake);
             ShowFromWorkplaceDialog(new AddModelWindow() { DataContext = dataContext });
-            await Task.WhenAll();
-            LoadControl();
         }
 
         private bool CanExecuteAddModel()
@@ -130,9 +128,8 @@ namespace AutoBase.LocalClient.WorkPlaces.MakesWP
 
         #region Private methods 
 
-        private async void LoadControl()
+        private async Task LoadControl()
         {
-            await Task.WhenAll();
             Makes = await Globals.DataProvider.GetMakes();
         }
 
@@ -140,7 +137,7 @@ namespace AutoBase.LocalClient.WorkPlaces.MakesWP
         {
             await base.StartUp();
             if (IsInDesignMode) return;
-            LoadControl();
+            await LoadControl();
         }
 
         #endregion
