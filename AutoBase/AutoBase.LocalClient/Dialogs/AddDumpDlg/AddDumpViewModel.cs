@@ -181,7 +181,7 @@ namespace AutoBase.LocalClient.Dialogs.AddDumpDlg
             dump.Model = null;
             dump.Module = null;
             try { await Globals.DataProvider.Dal.Save<Dump>(dump); }
-            catch (Exception e) { }
+            catch { }
             CloseCurrentWindow(true, typeof(AddDumpWindow));
         }
 
