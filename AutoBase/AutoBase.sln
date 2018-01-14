@@ -1,7 +1,7 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.26730.16
+Microsoft Visual Studio Solution File, Format Version 14.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.22609.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "AutoBase.DB", "AutoBase.DB\AutoBase.DB.sqlproj", "{79268EB7-AEAD-4DCE-92CF-95178D5DFCEE}"
 EndProject
